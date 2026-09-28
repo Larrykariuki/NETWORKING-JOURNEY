@@ -51,7 +51,7 @@ MAC address is like a device's local network identifier, when data needs to trav
 ### What I Learned
 IP addresses helps to identify the destination of the network while MAC address is used to identify the specific device on the local area network
 ## Packets 
-is the basic unit of data in the network layer and has an IP header which has information such the source and the IP address(destination) and with the data 
+is the basic unit of data in the network layer and has an IP header which has information such as the source and the IP address(destination) and with the data 
 ### Example
 like a small envelop that carries part of your data  and it has a sender's address and a destination address
 ### What I learned 
@@ -114,10 +114,25 @@ improve network  management and security
 ### Example
 A Large neighbourhood divided into different streets
 ### What I Learned 
-Subnetting is the process of dividing a network into smaller more manageable networks for efficiency
-### Next
-Learning CIDR notation and understanding how /26,/27 and other subnet mask divides the networks
+Subnetting is the process of dividing a network into smaller more manageable networks for efficiency called subnets
+e.g, a /24 network can be divided into multiple /26 networks
+For /26
+0......63,
+64......127,
+128......191,
+192.......255,
+where there are 64 total addresses,62 usable host addresses,1 network address and 1 broadcast address,
+I learned how to identify subnet boundaries 
+192.168.10.0/26, 192.168.10.64/26, 192.168.10.128/26, 192.168.10.192/26,
+## Network Segmentation
+is the process of dividing a network into seperate segments or security zones
+Organizations can use network segmentation to:
+control network traffic, Restrict access  between systems,
+Reduce unnecessary exposure,
+limits lateral movement after a compromise,the firewall or rules for routing can controll what traffic is allowed between the segments
+### What I want to learn next 
+I want to move from networking theory into practical networking labs,eventually using linux and wireshark to see the concepts I am learning in real network traffic.
+My goal is to build practical cybersecurity skills and document my progress on github
+       
 
-
-
-### What I 
+ 
