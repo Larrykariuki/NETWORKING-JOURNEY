@@ -18,6 +18,8 @@ The network admins can reduce these risks by restricting which switch ports are 
 DHCP-assigned address: Are designed automatically by a DHCP Server while a static IP Config is whereby network settings are entered  manually by an admin or user,DHCP is convenient for most of the client devices while the static config also known as DHCP reservations are useful for selected infrastructure or services
 ## What I have learned
 The DHCP automatically provides devices on the network with IP addresses and other network settings, the process of DHCPV4 is (DORA) which stands for Discover,Offer,Request and Acknowledge. DHCP leases allow the addresses to be reused and a DHCP Server that is not authorized can provide dangerous network settings so securing DHCP helps protect the security of a network
+## My Key Take-aways
+DHCP stands for Dynamic host configuration protocol and it can provide IP addresses,subnet mask,default gateway and DNS server. DORA stands for Discover, Offer, Request then Acknowledge. The DHCPV4 uses UDP ports 67 and 68, DHCP leases are renewable per period, Rogue DHCP Servers  and DHCP starvation can threaten the security of a network,DHCP snooping helps defend managed networks that are supported against unauthorized/suspicious DHCP server responses, understanding DHCP helps to investigate why a device has an IP address that is not expected, the gateway or the DNS server. The settings can provide critical/important clues when the user or admin is troubleshooting network connectivity problems or investigating suspicious activities
 
 
 
