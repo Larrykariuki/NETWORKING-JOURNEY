@@ -18,3 +18,4 @@ Traditional DNS quries use the UDP PORT 53 because UDP has low overhead and does
 It matters because internet connections in systems rely on name resolution, given that the security professionals want to investigate the Domain names that are suspicious ,DNS requests that are not expected, Domains that are compromised and malicious,DNS tunnelling, DNS Configuration problems, Reputation of the domain and infrastructure and the unusual record changes. Lets say if a computer is compromised contacts a suspected or unusual domain then its DNS Queriies can provide the evidence,the DNS logs can show which hosts requested a name when it made the request and which resolver handled the request but also note that the DNS alone does not proof that a connection was established successfully 
 
 
+
