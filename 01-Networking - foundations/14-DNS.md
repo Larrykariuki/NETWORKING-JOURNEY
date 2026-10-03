@@ -16,6 +16,8 @@ An MX also known as mail exchange record identifies mail servers responsible for
 Traditional DNS quries use the UDP PORT 53 because UDP has low overhead and does not need a connection first to be established, A DNS query and its responses are exchanged as seperate UDP datagram, and also the DNS uses TCP port 53 whereby the TCP is used for zone transfer and queries when a response is too large for the available UDP exchange,There are also encrypted DNS protocals which include (DOH) DNS over HTTPS that carries DNS messages over HTTPS, Using TCP PORT 443 OR HTTP/3, transport and DOT that stands for DNS over TLS which uses TCP PORT 853 these protocals encrypt DNS traffic between client and its selected resolver but they do not change DNS record types
 ### WHY DO DNS MATTER IN CYBERSECURITY
 It matters because internet connections in systems rely on name resolution, given that the security professionals want to investigate the Domain names that are suspicious ,DNS requests that are not expected, Domains that are compromised and malicious,DNS tunnelling, DNS Configuration problems, Reputation of the domain and infrastructure and the unusual record changes. Lets say if a computer is compromised contacts a suspected or unusual domain then its DNS Queriies can provide the evidence,the DNS logs can show which hosts requested a name when it made the request and which resolver handled the request but also note that the DNS alone does not proof that a connection was established successfully 
+### WHAT I LEARNED
+DNS is a distributed naming system that translates the domain names into IP addresses and mail server details 
 
 
 
