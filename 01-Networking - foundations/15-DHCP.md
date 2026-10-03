@@ -1,1 +1,2 @@
-##
+## DHCP
+Stands for dynamic host configuration protocal and it automatically provides devices with the network settings that they need to communicate, without it someone needs to configure the settings manually on every device, when i need to connect my laptop to a wifi network then the DHCP will assign IP address and provide the other network settings such as the subnet mask and others. The DHCP Server provides (a) IP address which identifies the device on the network, (b) Subnet mask which shows which part of the IP address represents the network, (c) default gateway which is the routers address that the device uses to reach other networks and (d) DNS Server which the devices uses to look up the domain names 
