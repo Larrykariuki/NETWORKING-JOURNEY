@@ -1,4 +1,4 @@
-##Traceroute and the path of the Network
+## Traceroute and the path of the Network
 Traceroute is a technique of network diagnostics that helps to identify the routers a packet passing through  to its destination, on linux the command is commonly known as traceroute while on windows the command is tracert, for instance my laptop wants to reach a website through my home router, my isp(internet service provided) and other routers then traceroute helps me examine this path
 ## How  Traceroute Work
 It takes advantage of the TTI, time to live field by sending a probe with a TTL of 1, then the first router reduces the TTL to 0 and returns an ICMP time exceeded message then the tool sends another probe with a higher TTL, each successive probe can reveal another router along the path then the process continues untill the destination is reached or a limit is met, the exact probe method depends on the operating system and the tool, some may use UDP probes by default while others can use ICMP/TCP
