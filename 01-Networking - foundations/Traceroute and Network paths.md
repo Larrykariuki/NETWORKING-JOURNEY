@@ -1,1 +1,16 @@
-
+##Traceroute and the path of the Network
+Traceroute is a technique of network diagnostics that helps to identify the routers a packet passing through  to its destination, on linux the command is commonly known as traceroute while on windows the command is tracert, for instance my laptop wants to reach a website through my home router, my isp(internet service provided) and other routers then traceroute helps me examine this path
+## How  Traceroute Work
+It takes advantage of the TTI, time to live field by sending a probe with a TTL of 1, then the first router reduces the TTL to 0 and returns an ICMP time exceeded message then the tool sends another probe with a higher TTL, each successive probe can reveal another router along the path then the process continues untill the destination is reached or a limit is met, the exact probe method depends on the operating system and the tool, some may use UDP probes by default while others can use ICMP/TCP
+## Running Traceroute on kali linux
+I can do traceroute 8.8.8.8 and to trace the domain name traceroute google.com the output may look something like 192.168.1.1 2.1ms 1.8ms .0ms **** 203.0.113.10 25.1 ms 24.7ms 25.0 ms which is just an example not a real occurence, so there is the hop number: which is the step along the discovered path, IP address or host name: which is the router or endpoint that responded, the time in ms: which is the round-trip times for the probes and asterisks (*): Probes that did not receive a response before the timeout
+## Traceroute and Ping
+Ping checks whether a destination responds to a particular type of probe and measures the round-trip time while traceroute reveals the intermediate hops along the path to a destination, they are usefull but they all dont guarantee that every application is working correctly 
+## Change of the Network path 
+The route to a destination may change because of network congestion or failures, routing protocol decisions, internet service provider policies, load balancing, different routes for traffic travelling in opposite direction. Traceroute shows the path revealed by its probes at that time 
+## Traceroute in Cybersecurity 
+Defenders and security testers that are authorized use traceroute to troubleshoot routing and reachability, understand where network delays occur,identify unexpected routing changes and support network mapping and incident investigations,attackers can also use path discovery techniques  during reconnaisance, network admins should understand this double use when monitoring traffic and protecting infrastructure. One should only test networks and systems that are owned or granted permission
+## What I have Learnt 
+Traceroute helps to reveal the network hopes that probes what they meet on the way to their destination and uses TTL values to allow routers to report where there served purpose. Missing responses do not indicate a fault often and the path shown by traceroute is only the veiw of the network at the time of testing
+## Key Takeaways
+Traceroute helps to investigate network paths, linux uses traceroute or tracepath while windows uses tracert, increasing TTL values help reveal successive hope. An asterix mean probes did not receive timely response not that the router is broken, traceroutes complements ping and other troubleshooting tools and that one should use path-discovery tools or techniques to systems and networks that are authorized for testing. 
