@@ -15,6 +15,11 @@ From the traceroute results i have learnt that traffic can pass through several 
 ## For Security and Privacy 
 Before I publish any of my screenshots of my terminal i will hide or reduce the details that are unecessary for explaining the lab such as the public IP address, MAC address, private network details, my usernmes and other sensitive information and i will only troubleshoot or scan systems and networks that i own or have permission to test
 ## What I have Learnt 
-Network troubleshooting will work best when testing one layer or possibility at a time e.g checking the IP configuration testing the IP connectivity, checking DNS resolution and tracing the network path,  they provide different pieces of evidence and one should interpret or read the results carefully rather than assume that an attempt failed proved the network has issues   
+Network troubleshooting will work best when testing one layer or possibility at a time e.g checking the IP configuration testing the IP connectivity, checking DNS resolution and tracing the network path,  they provide different pieces of evidence and one should interpret or read the results carefully rather than assume that an attempt failed proved the network has issues  
+### Screenshot
+![Ping test](screenshots/ping-8.8.8.8.png)
+### Screenshot
+![Traceroute test](screenshots/traceroute-8.8.8.8.png)
+
 
 
