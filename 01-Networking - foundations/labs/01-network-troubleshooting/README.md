@@ -8,7 +8,7 @@ Inspect the network the network interfaces and the command: IP-br address, this 
 The command being ping -c 5 8.8.8.8 the purpose is that this sends 5 icmp echo requests to 8.8.8.8 and it checks the replies arrival, what iam looking for is whether the replies are received, the round trip  time in ms and the packet loss percentage. My observation from the from the screenshot i sent 5 ICMP Echo requests to 8.8.8.8 and all received replies resulting in 0 percent packet loss and the average round trip was 94.7ms
 ### Screenshot
 ![Ping test to 8.8.8.8](Screenshots/Ping%20-8.8.8.8.png)
-[Ping test to Google](Screenshot/Ping%20-8.8.8.8.png)
+[Ping test to Google](Screenshots/Ping%20-8.8.8.8.png)
 ## Test 3 Test the DNS resolution 
 The command is: ping -c 5 google.com the purpose is to test whether kali can resolve the domain name and whether the destination responds to a ping request: I  will be  looking whether the destination responds to an IP address, whether the domain resolves to an IP address whether the replies arrive or whether there is an occurrence of packet loss. My observation is that a failed ping does not automatically prove that the DNS is broken because the destination or the network may filter the ICMP 
 Test 4 Trace the Network path:
