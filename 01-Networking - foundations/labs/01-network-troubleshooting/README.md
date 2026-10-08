@@ -20,9 +20,9 @@ Before I publish any of my screenshots of my terminal i will hide or reduce the 
 ## What I have Learnt 
 Network troubleshooting will work best when testing one layer or possibility at a time e.g checking the IP configuration testing the IP connectivity, checking DNS resolution and tracing the network path,  they provide different pieces of evidence and one should interpret or read the results carefully rather than assume that an attempt failed proved the network has issues  
 ### Screenshot
-![Ping test](screenshots/ping-8.8.8.8.png)
+![Ping test](Screenshots/ping-8.8.8.8.png)
 ### Screenshot
-![Traceroute test](screenshots/traceroute-8.8.8.8.png)
+![Traceroute test](Screenshots/traceroute-8.8.8.8.png)
 
 
 
