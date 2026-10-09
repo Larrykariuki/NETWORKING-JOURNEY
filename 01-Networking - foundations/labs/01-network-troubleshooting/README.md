@@ -8,9 +8,9 @@ Inspect the network the network interfaces and the command: IP-br address, this 
 The command being ping -c 5 8.8.8.8 the purpose is that this sends 5 icmp echo requests to 8.8.8.8 and it checks the replies arrival, what iam looking for is whether the replies are received, the round trip  time in ms and the packet loss percentage. My observation from the from the screenshot i sent 5 ICMP Echo requests to 8.8.8.8 and all received replies resulting in 0 percent packet loss and the average round trip was 94.7ms
 ### Screenshot
 ![Ping test to 8.8.8.8](screenshots/ping-8.8.8.8.png)
-![Ping test to Google](screenshots/ping-c5-google.com.png)
 ## Test 3 Test the DNS resolution 
-The command is: ping -c 5 google.com the purpose is to test whether kali can resolve the domain name and whether the destination responds to a ping request: I  will be  looking whether the destination responds to an IP address, whether the domain resolves to an IP address whether the replies arrive or whether there is an occurrence of packet loss. My observation is that a failed ping does not automatically prove that the DNS is broken because the destination or the network may filter the ICMP 
+The command is: ping -c 5 google.com the purpose is to test whether kali can resolve the domain name and whether the destination responds to a ping request: I  will be  looking whether the destination responds to an IP address, whether the domain resolves to an IP address whether the replies arrive or whether there is an occurrence of packet loss. My observation is that when i used the ping -c-5-google.com,the domain resolved successfully to 172.217.170.206 and then all the 5 ICMP echo requests received replies and resulting in a 0% packet loss and the average round trip time was 133.3ms
+![Ping test to Google](screenshots/ping-c5-google.com.png)
 Test 4 Trace the Network path:
 the commands being 8.8.8.8, the trace route being google .com, the purpose of traceroute path is that it helps to reveal the network hops that respond to the probes that are travelling to the destinations. The earlier results showed that private IP addresses at many hops, a hop associated with an airtel kenya hstname, and a successful response from 8.8.8.8 while some intermediate hops displays *****
 ## My Analysis 
