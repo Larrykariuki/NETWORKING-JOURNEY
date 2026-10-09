@@ -7,8 +7,8 @@ Inspect the network the network interfaces and the command: IP-br address, this 
 ## Test 2 Test IP connectivity 
 The command being ping -c 5 8.8.8.8 the purpose is that this sends 5 icmp echo requests to 8.8.8.8 and it checks the replies arrival, what iam looking for is whether the replies are received, the round trip  time in ms and the packet loss percentage. My observation from the from the screenshot i sent 5 ICMP Echo requests to 8.8.8.8 and all received replies resulting in 0 percent packet loss and the average round trip was 94.7ms
 ### Screenshot
-![Ping test to 8.8.8.8](Screenshots/Ping%20-8.8.8.8.png)
-[Ping test to Google](Screenshots/Ping%20-8.8.8.8.png)
+![Ping test to 8.8.8.8](screenshots/Ping-8.8.8.8.png)
+[Ping test to Google](screenshots/Ping-8.8.8.8.png)
 ## Test 3 Test the DNS resolution 
 The command is: ping -c 5 google.com the purpose is to test whether kali can resolve the domain name and whether the destination responds to a ping request: I  will be  looking whether the destination responds to an IP address, whether the domain resolves to an IP address whether the replies arrive or whether there is an occurrence of packet loss. My observation is that a failed ping does not automatically prove that the DNS is broken because the destination or the network may filter the ICMP 
 Test 4 Trace the Network path:
@@ -20,9 +20,9 @@ Before I publish any of my screenshots of my terminal i will hide or reduce the 
 ## What I have Learnt 
 Network troubleshooting will work best when testing one layer or possibility at a time e.g checking the IP configuration testing the IP connectivity, checking DNS resolution and tracing the network path,  they provide different pieces of evidence and one should interpret or read the results carefully rather than assume that an attempt failed proved the network has issues  
 ### Screenshot
-![Ping test](Screenshots/ping-8.8.8.8.png)
+![Ping test](screenshots/ping-8.8.8.8.png)
 ### Screenshot
-![Traceroute test](Screenshots/traceroute-8.8.8.8.png)
+![Traceroute test](screenshots/traceroute-8.8.8.8.png)
 
 
 
