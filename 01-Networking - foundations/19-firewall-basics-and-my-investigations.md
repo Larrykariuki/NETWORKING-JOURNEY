@@ -8,8 +8,8 @@ ufw stands for the uncomplicated firewall management tool or a simplified firewa
 ### 2 sudo nft list ruleset
 nft stands for netfilter tables and is the is the inbuilt system in linux kernel that organizes rules, my observation with this command is that was no rules displayed in the nftables ruleset
 ### 3 Inspect IPV4 firewall rules
-### sudo iptables -L -n -V
-which stands for sudo run as admin, iptables is the linux firewall tool, -L lists the rules, -n shows IPS and ports as numbers instead of looking up names then -v, verbose which adds packet and byte counters plus the network interfaces
+### sudo iptables -L -n -v
+which stands for sudo run as admin, iptables is the linux firewall tool, -L lists the rules, -n shows IPS and ports as numbers instead of looking up names then -v also note that it should be small letter not big, verbose which adds packet and byte counters plus the network interfaces
 ### 4 Inspect IPV6 Firewall rules
 ### sudo ip6tables -L -n -v
 this is for IPV6 networks and the observation was the same with iptables showing empty chains with a default of ACCEPT policy
