@@ -38,7 +38,7 @@ The command being sudo iptables -s OUTPUT the observation is that the output ret
 I have learnt how to inspect or look at the firewall policies and the rules that are already occuring, How a network engeneer or a cyb
 rersecurity specialist can add a narrowly or contained and stricted scopped of the firewall rule, How the DROP function or action can handle packets that are matching , How to remove a temporary rule that was by default in the firewall and the importance of checking a firewall configuration that was by default or originally before a test
 ## My Conclusion
-What I have done is that i have successfully added, inspected, and removed an originally temporary rule in the firewall that was configured on kali linux and i verrified that the output chain returned to its original state that was dispalyed without changing the default policy
+What I have done is that i have successfully added, inspected, and removed an originally temporary rule in the firewall that was configured on kali linux and i verrified that the output chain returned to its original state that was dispalyed without changing the default policy the lab helped me to practise and learn basic linux firewall administration at the same time keeping the test limited and reversible
 
 
 
