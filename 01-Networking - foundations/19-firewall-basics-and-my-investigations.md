@@ -32,11 +32,13 @@ The command being sudo iptables -A OUTPUT -d 192.0.2.1 -P ICMP --ICMP -type echo
 ![sudo baseline](labs/01-network-troubleshooting/screenshots/02-output-rule-added.png)
 ### Step 3: Inspect the rules
 The command being sudo iptables -s -OUTPUT : My observation is that the output displayed the new DROP rule while still maintaining the default ACCEPT output policy
-![sudo baseline](labs/01-network-troubleshooting/screenshots/.png)
+![sudo baseline](labs/01-network-troubleshooting/screenshots/03-Rule-inspected.png)
 ### Step 4: Remove the temporary rule 
 The command being sudo iptables -P OUTPUT -d 192.0.2.1 -p icmp --icmp type echo-request-j DROP
+![sudo baseline](labs/01-network-troubleshooting/screenshots/Remove-temp-rule.png)
 ### Step 5: Verify the cleanup 
 The command being sudo iptables -s OUTPUT the observation is that the output returned to -p OUTPUT ACCEPT while the temporary rule is not listed any longer
+![sudo baseline](labs/01-network-troubleshooting/screenshots/cleanup.png)
 ## Lessons learnt
 I have learnt how to inspect or look at the firewall policies and the rules that are already occuring, How a network engeneer or a cyb
 rersecurity specialist can add a narrowly or contained and stricted scopped of the firewall rule, How the DROP function or action can handle packets that are matching , How to remove a temporary rule that was by default in the firewall and the importance of checking a firewall configuration that was by default or originally before a test
