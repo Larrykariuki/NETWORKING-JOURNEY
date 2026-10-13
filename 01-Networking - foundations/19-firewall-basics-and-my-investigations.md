@@ -26,6 +26,7 @@ I investigated the firewall configuration visible on my kali linux system withou
 My objective is to add, inspect and remove a specific IPV4 firewall rule by using iptables on kali linux operating system
 ### Step 1: Inspect the baseline
 The command being sudo iptables -s -OUTPUT: My observation is that the command showed -P OUTPUT ACCEPT which means that it is the default policy for the output chain that is the outgoing traffic
+![sudo baseline](labs/01-network-troubleshooting/screenshots/01-THE SUDO BASELINE.png)
 ### Step 2: Adding a temporary rule 
 The command being sudo iptables -A OUTPUT -d 192.0.2.1 -P ICMP --ICMP -type echo -request -j DROP : From my observation is that the rule was added to the output chain and a matched the outgoing icmp echo  request that was destined for 192.0.2.1 and also noting that the address belongs or is reserved for documetation purposes and examples and not a reality aspect
 ### Step 3: Inspect the rules
