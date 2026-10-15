@@ -47,4 +47,7 @@ The name of the dns querry was example.com, the A querry requested an IPV4 addre
 Wireshark is a graphical tool for packet analysis that inspects packets visually, with it i can see and find out DNS querries and responces and see their record types and addresses that are returned by the dns resolver. An A record is associated with IPV4 and AAAA record is associated with IPV6,and also a DNS response can have multiple addresses for one domain
 ## My Conclusion 
 I have understood how the DNS resolution can look like in a packet capture and that tcpdump and wireshark can be used together to troubleshoot networks and investigate security incidents, a packet capture can contain very sensitive information so i will be hiding some information on my screenshots before sharing it publicly
-
+![wireshark capture](labs/01-network-troubleshooting/screenshots/wireshark-dns-capture.png)
+![DNs filtering](labs/01-network-troubleshooting/screenshots/dns-filter-traffic.png)
+![Inspecting dns query](labs/01-network-troubleshooting/screenshots/dns-query-inspection.png)
+![Inspecting dns responce](labs/01-network-troubleshooting/screenshots/DNS-RESPONSE-INSPECTION.png)
