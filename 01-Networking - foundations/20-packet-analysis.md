@@ -11,3 +11,9 @@ Lets say my laptop is making some unexpected DNS requests then i can use a packe
 It helps us to troubleshoot network connectivity,identify suspicious traffic, and support incident investigation
 ## Lessons learnt
 Packet analysis involves the examining of the network packets in order to understand how the devices are communicating across the network. Wireshark is a tool for packet analysis and it provides a graphical user interface for inspecting packets while tcpdump provide the command-line packet capture and inspection. Packet analysis is very usefull for troubleshooting networks and investigating security instances
+## Practical lab: Capturing the DNS traffic with tcpdump
+The objective is to capture and inspect DNS requests and responses on my kali linux machine machine. The tools to be used are kali linux operating system, tcpdump, and nslookup 
+## Commands used
+### checking the network interface
+the command used to check the network interface are ip -br  address
+
