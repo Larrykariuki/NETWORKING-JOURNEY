@@ -16,4 +16,4 @@ The objective is to capture and inspect DNS requests and responses on my kali li
 ## Commands used
 ### checking the network interface
 the command used to check the network interface are ip -br  address
-
+![network interface](labs/01-network-troubleshooting/screenshots/ip -br address 1.png)
