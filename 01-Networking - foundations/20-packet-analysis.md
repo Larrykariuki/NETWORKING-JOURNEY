@@ -18,3 +18,4 @@ The objective is to capture and inspect DNS requests and responses on my kali li
 the command used to check the network interface are ip -br  address
 ![network interface](labs/01-network-troubleshooting/screenshots/ip-br-address-1.png)
 ip - is the tool for managing network on linux, address means show the ip addresses and -br means breif in that the computer prints one short line per connection
+the output is eth0 which is the interface for ethernet cable is down, wlan0 is the wifi and the lo is the loopback interface which is the computer talking to intself, the 192.168.1.10/24 is the ip address
