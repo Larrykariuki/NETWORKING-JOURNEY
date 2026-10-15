@@ -21,4 +21,4 @@ ip - is the tool for managing network on linux, address means show the ip addres
 the output is eth0 which is the interface for ethernet cable is down, wlan0 is the wifi and the lo is the loopback interface which is the computer talking to intself, 10.80.205.104/24  is the ipv4 address the first 3 numbers identify the network while the last one identifies the device that is what /24 means the interface to capture is wlan0 because it is the only one that is carrying traffic
 ### Capture the DNS traffic
 the command being sudo tcpdump -i wlan0 -nn -vv port 53
-![network interface](labs/01-network-troubleshooting/screenshots/ip-br-address-1.png)
+![DNS traffic capture](labs/01-network-troubleshooting/screenshots/dns-traffic-capture.png)
