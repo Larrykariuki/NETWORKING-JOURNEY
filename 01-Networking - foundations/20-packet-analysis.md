@@ -29,3 +29,4 @@ sudo tcpdump -nn -vv -r /home/kali/dns-capture.pcap this command replays a packe
 ![DNS traffic capture](labs/01-network-troubleshooting/screenshots/read-saved-capture.png)
 ### Generating a DNS lookup
 the command being nslookup example.com asks a DNS server the ip address for example.com then prints the answer and also noted that the A and AAAA queries and replies  i captured are what nslookup triggers
+![DNS LOOKUP](labs/01-network-troubleshooting/screenshots/nslookup.png)
