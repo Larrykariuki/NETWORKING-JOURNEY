@@ -30,3 +30,9 @@ sudo tcpdump -nn -vv -r /home/kali/dns-capture.pcap this command replays a packe
 ### Generating a DNS lookup
 the command being nslookup example.com asks a DNS server the ip address for example.com then prints the answer and also noted that the A and AAAA queries and replies  i captured are what nslookup triggers
 ![DNS LOOKUP](labs/01-network-troubleshooting/screenshots/nslookup.png)
+## My observations
+The wireless interface is wlan0 with IPV4 address 10.80.205.104/24 where the 3 numbers identify the network and the last number represents the device, the DNS resolver was 10.80.205.129 using udp port 53 and i observed a DNS A record querry for the example.com,the resolver returned an IPV4 address including 172.66.147.243 and also saw an AAAA record querry for an IPV6 address then i saved the packets captured to .pcap file and read the file with tcpdump
+## Lessons that i learnt 
+tcpdump captures live traffic of the network and also can read the save captured file for analysis or troubleshooting or investigations, i have also learnt how to identify the DNS queries, responces, ip source and destination, ports and A AND AAAA records
+## Conclusion
+Now i have understood how the DNS works in packets and how analysing the packets helps in trouble shooting networks and investigating security incidences
