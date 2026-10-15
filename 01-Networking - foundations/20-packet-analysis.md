@@ -22,3 +22,4 @@ the output is eth0 which is the interface for ethernet cable is down, wlan0 is t
 ### Capture the DNS traffic
 the command being sudo tcpdump -i wlan0 -nn -vv port 53
 ![DNS traffic capture](labs/01-network-troubleshooting/screenshots/dns-traffic-capture.png)
+this command records the DNS traffic going through my wifi, sudo means run it as the administrator, tcpdump is the toofor packet analysis in cmd, -i wlan0 listens on the wifi interface, -nn this shows the raw IP and the numerical port numbers, -vv this one gives extra details, port 53 shows only the DNS traffic, because 53 is associated with DNS in the output the > is when u can tell queries from replies if the 53 port is on the right of the arrow it is ur request going to the server and if it is viceversa it is the server answering back to you
