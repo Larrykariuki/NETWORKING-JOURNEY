@@ -16,4 +16,5 @@ The objective is to capture and inspect DNS requests and responses on my kali li
 ## Commands used
 ### checking the network interface
 the command used to check the network interface are ip -br  address
-![network interface](labs/01-network-troubleshooting/screenshots/ip -br address 1.png)
+![network interface](labs/01-network-troubleshooting/screenshots/ip-br-address-1.png)
+ip - is the tool for managing network on linux, address means show the ip addresses and -br means breif in that the computer prints one short line per connection
