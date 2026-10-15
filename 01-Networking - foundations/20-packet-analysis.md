@@ -11,7 +11,7 @@ Lets say my laptop is making some unexpected DNS requests then i can use a packe
 It helps us to troubleshoot network connectivity,identify suspicious traffic, and support incident investigation
 ## Lessons learnt
 Packet analysis involves the examining of the network packets in order to understand how the devices are communicating across the network. Wireshark is a tool for packet analysis and it provides a graphical user interface for inspecting packets while tcpdump provide the command-line packet capture and inspection. Packet analysis is very usefull for troubleshooting networks and investigating security instances
-## Practical lab: Capturing the DNS traffic with tcpdump
+## Practical lab 1: Capturing the DNS traffic with tcpdump
 The objective is to capture and inspect DNS requests and responses on my kali linux machine machine. The tools to be used are kali linux operating system, tcpdump, and nslookup 
 ## Commands used
 ### checking the network interface
@@ -36,3 +36,15 @@ The wireless interface is wlan0 with IPV4 address 10.80.205.104/24 where the 3 n
 tcpdump captures live traffic of the network and also can read the save captured file for analysis or troubleshooting or investigations, i have also learnt how to identify the DNS queries, responces, ip source and destination, ports and A AND AAAA records
 ## Conclusion
 Now i have understood how the DNS works in packets and how analysing the packets helps in trouble shooting networks and investigating security incidences
+## Practical lab 2: Inspecting the DNS packets with wireshark
+### My objective
+The objective is tu use wireshark which is the graphical user interface tool for capturing packets and to inspect the DNS queries and responces that were captured with tcpdump in and saved in .pcap file, the tools i will be using are kali linux machine, wireshark 4.6.6 and a saved captured packet(dns.capture.pcap)
+### The Procedure
+Open the captured packets saved file in wireshark then enter the display filter at the top of the panel, click the DNS A query for the example.com, inspect the DNS querry name and the record type, examine the responces in the answeres section then lastly select an AAAA query to identify the IPV6 record type
+## My Observations
+The name of the dns querry was example.com, the A querry requested an IPV4 address that is associated with, the response from the DNS contained 2 IPV4 address that is 172.66.147.243 and 104.20.23.154, the AAAA query requested an IPV6 address and the dns filter helps to filter and show only the dns packets for analysis
+## Lessons I have learnt
+Wireshark is a graphical tool for packet analysis that inspects packets visually, with it i can see and find out DNS querries and responces and see their record types and addresses that are returned by the dns resolver. An A record is associated with IPV4 and AAAA record is associated with IPV6,and also a DNS response can have multiple addresses for one domain
+## My Conclusion 
+I have understood how the DNS resolution can look like in a packet capture and that tcpdump and wireshark can be used together to troubleshoot networks and investigate security incidents, a packet capture can contain very sensitive information so i will be hiding some information on my screenshots before sharing it publicly
+
