@@ -27,3 +27,5 @@ this command records the DNS traffic going through my wifi, sudo means run it as
 sudo tcpdump -nn -vv -r /home/kali/dns-capture.pcap this command replays a packet that has been captured by the command sudo tcpdump -i wlan0 -nn port 53 -w dns-capture.pcap and also i noticed that u can filter while reading, for instance tcpdump -nn -r dns-capture.pcap port 53
 ![save packet capture ](labs/01-network-troubleshooting/screenshots/save-packet.png)
 ![DNS traffic capture](labs/01-network-troubleshooting/screenshots/read-saved-capture.png)
+### Generating a DNS lookup
+the command being nslookup example.com asks a DNS server the ip address for example.com then prints the answer and also noted that the A and AAAA queries and replies  i captured are what nslookup triggers
