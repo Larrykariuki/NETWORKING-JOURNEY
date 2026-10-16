@@ -51,3 +51,10 @@ I have understood how the DNS resolution can look like in a packet capture and t
 ![DNs filtering](labs/01-network-troubleshooting/screenshots/dns-filter-traffic.png)
 ![Inspecting dns query](labs/01-network-troubleshooting/screenshots/dns-query-inspection.png)
 ![Inspecting dns responce](labs/01-network-troubleshooting/screenshots/DNS-RESPONSE-INSPECTION.png)
+## Practical lab 3: Observing the DNS traffic with tcpdump
+### My Objective
+My objective is to observe the DNS requests and responces on my kali linux machine and to understand the dns queries that are reapeting 
+### The command used
+The command used being sudo tcpdump -i wlan0 -nn -c 10 'port 53'which means the command is using tcpdump to capture and display the live network traffic this command captures the first 10 DNS packets that are moving across the wlan0 interface showing a raw and numerical format what each of the command does.
+sudo this is the super user or admin privilleges meaning it is running the command at the highest level as it is required to interact directly with the network driver, tcpdump is the packet analysis tool for cmd, -i wlan0 this specifies the network interface to listen on wlan0, -i representing the interface, -nn disables the names and the service resolution, -c 10 sets the packet count limit ,instead of running continously and terminating with ctrl c u can set the packets limit to 10 to  cancel out the process of packet capture ,and the 'port 53' tells the tcpdump to only capture traffic where the source and destination is on port 53 which is the standard port that is used for the dns querries and responces, the command helps in network troubleshooting.
+
