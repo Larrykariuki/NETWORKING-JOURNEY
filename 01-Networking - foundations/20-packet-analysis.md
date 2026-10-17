@@ -69,6 +69,7 @@ This exercise has helped me observe the DNS requests and the responces and pract
 The objective of this lab  is to monitor live DNS traffic on my kali linux machine and to see the queries for the different domain names the examples to be used are example.com and google.com
 ### Commands used
 The command to be used are sudo tcpdump -i wlan0 -nn -l 'udp port 53' which listens for incoming and outgoing traffic of the dns and prints back the packets as they are arriving and may show less detail than verbose capture moreover as the tcpdump is listening we open another terminal to generate the DNS queries and the command to be used are nslookup example.com and nslookup google.com
+![DNS MONITORING](labs/01-network-troubleshooting/screenshots/DNS.png)
 ### My observation 
 The Capture ran on the wlan0 network interface, the filter selected the udp traffic using port 53, the DNS activity for example.com and google.com  were captured in my terminal
 ### Lessons Learnt
