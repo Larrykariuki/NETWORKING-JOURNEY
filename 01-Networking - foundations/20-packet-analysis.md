@@ -85,9 +85,12 @@ The built in tool command in linux is ss. Open the terminal and run ss-tun the c
 ### Whois command
 This command is used to identify the IP address discovered during the display of servers in the network. The commands are (a) whois 140.82.112.26, (b) who is 34.107.243.93 and (c) who is 151.101.1.91. The findings I saw was that (a) is registered to github inc, (b) is registered to google LLC and also the whois noted that ggogle cloud customers use addresses in this allocation and the last one i checked was 151.101,1,91 that is registered to fastly
 ### Lessons Learnt
-ss-tnp shows established TCP connections,remote and local ip addresses, port numbers and their processes. Whois identifies the organization that is associatedwith an IP address range, the port 443 indicates HTTPS traffic and the organizations such as google and fastly provides the infrastructure that is ued by other services
+ss-tnp shows established TCP connections,remote and local ip addresses, port numbers and their processes. Whois identifies the organization that is associated with an IP address range, the port 443 indicates HTTPS traffic and the organizations such as google and fastly provides the infrastructure that is ued by other services
 ### My security takeaway 
 One should relate the network connections with the dns info, app activity and many other evidences before he or she decides whether a connection is malicious
+![ACTIVE-NETWORK-INSPECTION](labs/01-network-troubleshooting/screenshots/ACTIVE-NETWORK-INSPECTION.png)
+![WHOIS](labs/01-network-troubleshooting/screenshots/WHOIS.png)
+![WHOIS2](labs/01-network-troubleshooting/screenshots/WHOIS2.png)
 
 
 
