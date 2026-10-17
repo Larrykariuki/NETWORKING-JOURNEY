@@ -102,6 +102,7 @@ The DNS resolver was 10.80.205.129 that was listening on the DNS port 53 and the
 The dns translates domain names into IP adrresses, tcpdump captures the DNS queries and the responses and the ss displays active network connections. I have also realized that a result of the DNS and a connection that is active to an IP address are seperate observations and matching them requires careful correlation, A DNS lookup by itself does not proof that the hostname created a particular connection
 ### Security takeaway
 Before assuming that a network activity is suspicious one should collect evidence, compare timestamps and endpoints and distinguish confirmed observations from assumptions before assuming
+![DNS to connection investigation](labs/01-network-troubleshooting/screenshots/DNS-CONNECTION-INVESTIGATION.png)
 
 
 
