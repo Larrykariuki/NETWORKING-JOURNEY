@@ -91,7 +91,17 @@ One should relate the network connections with the dns info, app activity and ma
 ![ACTIVE-NETWORK-INSPECTION](labs/01-network-troubleshooting/screenshots/ACTIVE-NETWORK-INSPECTION.png)
 ![WHOIS](labs/01-network-troubleshooting/screenshots/WHOIS.png)
 ![WHOIS2](labs/01-network-troubleshooting/screenshots/WHOIS2.png)
-
+## Practical lab 6: DNS to Connection investigation
+### My objective
+I am going to observer the DNS resolution and compare it with the active TCP connections. The tools i will be using are nslookup which will be used to query DNS records, tcpdump that will be used to capture DNS packets, ss that will be used to inspect TCP connections and whois will be used to identify the organizations associated with IP address ranges
+### The Commands used
+The commands to be used are nslookup github.com, sudo tcpdump -i wlan0 -nn -l 'udp port 53', ss -tnp and whois 140.82.112.26
+### My observations
+The DNS resolver was 10.80.205.129 that was listening on the DNS port 53 and the DNS A querry for github.com returned 20.87.245.0, the AAAA query received a response with no IPV6 address records in its answer section, ss-tnp showed established firefox TCP connections to remote endpoints using 443 and whois associated the observed IP ranges with organizations including Github, Google and Fastly 
+### Lessons learnt 
+The dns translates domain names into IP adrresses, tcpdump captures the DNS queries and the responses and the ss displays active network connections. I have also realized that a result of the DNS and a connection that is active to an IP address are seperate observations and matching them requires careful correlation, A DNS lookup by itself does not proof that the hostname created a particular connection
+### Security takeaway
+Before assuming that a network activity is suspicious one should collect evidence, compare timestamps and endpoints and distinguish confirmed observations from assumptions before assuming
 
 
 
