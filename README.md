@@ -28,7 +28,7 @@ My goal is to build a strong networking foundation from scratch that i can use i
 -[X] VLANs,
 -[X] DHCP,
 -[X] DNS,
--[] Wireshark and packet analysis
+-[X] Wireshark and packet analysis
 ## What is a Computer Network?
 Is a group of interconnected electronic devices communicating with each other and can share data or resources with oneanother
 ### Example
