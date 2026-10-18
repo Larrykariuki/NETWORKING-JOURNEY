@@ -117,5 +117,21 @@ The certificate subject which is the certificate named subject is CN=github.com,
 TLS helps to protect the data exchanges between a client and a server in HTTPS connections, the TLS Certificate helps to verify the identity of the server and it contains its public key, the certificate authorities sign the certificates and the clients validate the certificate chain against their configured trust stores, the openssl command can inspect a TLS connection and extract the certificate information, including its subject, the issuer and the dates valid
 ### Security Takeaway
 Verrification of a certificate is an important part of a secured communication 
+## Practical Lab 8: Inspecting HTTPS traffic in wireshark
+### The objective
+My objective of this lab is to capture HTTPS traffic and inspect the TLS handshake information using wireshark tool 
+### The Command to capture HTTPS traffic 
+The command being sudo tcpdump -i wlan0 -nn -s 0 -w/tmp/https-lab.pcap 'tcp port 443' captures and saves the file to pcap; I opened github  in firefox while the capture was running and after stopping it the tcpdump reported 3898 captured packets 
+![CAPTURING HTTPS TRAFFIC](labs/01-network-troubleshooting/screenshots/CERTIFICATE-EXTRACTION.png)
+### Inspecting the capture of 3898 packets 
+The command being wireshark /tmp/https-lab.pcap opens the captured file via wireshark then displays the filter by applying the command tls which filters the TLS packets, including client hello server hello, and the application data
+### 3 Inspecting a client hello packet 
+When observing frame 9 i saw the source ip, destination ip, source port, destination port, the TLS handshake and the length of the handshake
+## Lessons learnt 
+The https uses port 443, the Tls uses handshake to establish security parameters before the application data that is protected is exchanged, A client hello begins the tls handshake, wireshark displays packet metadata and TLS handshake information even when the application data is encrypted, the version feilds in a TLS 1.3 client hello can contain legacy values for compatibility, A missing SNI field does not by itself prove that there is something wrong 
+## My Conclusions
+The HTTPs traffic was successfully captured and the TLS packets were inspected with tcpdump in wireshark, the exercise has helped me to understand how packet analysis can reveal connections
+
+
 
 
