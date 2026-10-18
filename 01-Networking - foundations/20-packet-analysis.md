@@ -103,6 +103,17 @@ The dns translates domain names into IP adrresses, tcpdump captures the DNS quer
 ### Security takeaway
 Before assuming that a network activity is suspicious one should collect evidence, compare timestamps and endpoints and distinguish confirmed observations from assumptions before assuming
 ![DNS to connection investigation](labs/01-network-troubleshooting/screenshots/DNS-CONNECTION-INVESTIGATION.png)
-
+## Practical Lab 7: Inspecting the HTTPS and the TLS Certificates
+The objective here is to look a servers TLS certificate and understand how it helps to secure HTTPS connections, the TLS is the security protocol for HTTPS connections
+### The Command
+The command to be used is openssl s_client -connect github.com:443 -servername github.com </dev/null. This command means as follows openssl s-client connects to the TLS server and displays the handshake and the certificate information
+### Extracting the certificate details 
+The command used is openssl s-client-connect github.com:443 -servername github.com <dev/null 2>/dev/null | openssl x509 -noout-subject-issuer-dates where the openssl x509 extracts the fields from the certificate
+### Observation from the results
+The certificate subject which is the certificate named subject is CN=github.com, The certificate issuer is sectigo public server Authentication CA DV E36, the certificate validity began in september 1,2026 and ends in november 29,2026, TLS version is TLS 1.3 and the certificate verrified a return code:0 (ok)
+Lessons Learnt 
+TLS helps to protect the data exchanges between a client and a server in HTTPS connections, the TLS Certificate helps to verify the identity of the server and it contains its public key, the certificate authorities sign the certificates and the clients validate the certificate chain against their configured trust stores, the openssl command can inspect a TLS connection and extract the certificate information, including its subject, the issuer and the dates valid
+### Security Takeaway
+Verrification of a certificate is an important part of a secured communication 
 
 
