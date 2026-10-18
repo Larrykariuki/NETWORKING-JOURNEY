@@ -122,7 +122,7 @@ Verrification of a certificate is an important part of a secured communication
 My objective of this lab is to capture HTTPS traffic and inspect the TLS handshake information using wireshark tool 
 ### The Command to capture HTTPS traffic 
 The command being sudo tcpdump -i wlan0 -nn -s 0 -w/tmp/https-lab.pcap 'tcp port 443' captures and saves the file to pcap; I opened github  in firefox while the capture was running and after stopping it the tcpdump reported 3898 captured packets 
-![CAPTURING HTTPS TRAFFIC](labs/01-network-troubleshooting/screenshots/CAPURING-HTTPS-TRAFFIC.png)
+![CAPTURING HTTPS TRAFFIC](labs/01-network-troubleshooting/screenshots/CAPTURING-HTTPS-TRAFFIC.png)
 ### Inspecting the capture of 3898 packets 
 The command being wireshark /tmp/https-lab.pcap opens the captured file via wireshark then displays the filter by applying the command tls which filters the TLS packets, including client hello server hello, and the application data
 ![INSPECTING PACKETS ](labs/01-network-troubleshooting/screenshots/INSPECTING-PACKETS.png)
