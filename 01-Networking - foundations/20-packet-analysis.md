@@ -148,6 +148,21 @@ The command being nslookup 34.107.243.93 the reverse dns result came to 93.243.1
 The ss command helps us to identify established TCP connections and their processes, reverse DNS is used in PTR records to associate the ip addresses with hostnames,A browser can maintain simultaneous connections to different remote services, reverse DNS provides the clues about an infrastructure: In network investigations they are stronger when multiple observations are coorelated, including the DNS records, TCP connections, the TLS information and the application context
 ### My Conclusion
 I have used ss and nslookup to investigate the 2 active HTTPS connections from my kali and compared the remote IP addresses with their reverse dns names and i learnt how these observations helps in network investigation
+## Practical lab 10: Capturing and Analysing the DNS traffic
+### The Objective
+The purpose is to capture DNS queries and responses using tcpdump and to  understand how a computer resolves domain names to IP addresses
+### 1 DNS capture 
+The command being sudo tcpdump -i wlan0 -nn -l 'udp port 53' uses wlan0 interface to monitor UDP traffic on port 53
+### 2 Generate DNS query 
+The command being nslookup example.com the capture showed my laptop 10.80.205.104 sending DNS queries to the resolver 10.80.205.129 the command returned the following addresses
+### IPV4 addresses
+That is 172.66.147.243 and 104.20.23.154
+### IPV6 addresses 
+That is 2606:4700:10::ac42:9343 and 2606:4700:10::6814:179 a in wwhich the results matched the A and AAAA records that were observed in the tcpdump capture
+## Lessons Learnt 
+tcpdump monitors DNS traffic on a network interface selected, DNS uses UDP port 53, A record contains IPV4 address, AAAA record contains IPV6 address, DNS query IDS helps one to associate responses with their requests
+## Conclusion 
+tcpdump and nslookup together enables one to observe DNS traffic and verify the return addresses, observed both A and AAAA queries and I have learnt how DNS help devices to obtain IP addresses for domain name
 
 
 
