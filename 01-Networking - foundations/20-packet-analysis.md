@@ -132,6 +132,21 @@ When observing frame 9 i saw the source ip, destination ip, source port, destina
 The https uses port 443, the Tls uses handshake to establish security parameters before the application data that is protected is exchanged, A client hello begins the tls handshake, wireshark displays packet metadata and TLS handshake information even when the application data is encrypted, the version feilds in a TLS 1.3 client hello can contain legacy values for compatibility, A missing SNI field does not by itself prove that there is something wrong 
 ## My Conclusions
 The HTTPs traffic was successfully captured and the TLS packets were inspected with tcpdump in wireshark, the exercise has helped me to understand how packet analysis can reveal connections
+## Practical lab 9: Coorelating HTTPS connections with reverse DNS 
+### Objecives
+The purpose is to see active HTTPS connections and compare their remote IP addresses with the reverse DNS results:
+### 1 The Command:
+The command being ss-tnp inspects the active connections available then i observe 2 established TCP connections that were associated with firefox. ESR:- 10.80.205.104:43574-------34.107.245.93:443 and 10.80.205.104:58420--------140.82.113.26:443, both connections used the remote port 443 that is commonly associated with HTTPS
+
+### 2 Investigating the 1st remote IP:
+The command being nslookup 140.82.113.26 the DNS results came to ib-140.82.113.26.iad.github.com: the hostname is associated with the github infrastructure 
+### 3 Investigating the 2nd remote IP 
+The command being nslookup 34.107.243.93 the reverse dns result came to 93.243.107.34.bc.google user content.com the hostname is under googles googleusercontent.com domain indicates the google associated infrastructre
+### Lessons Learnt
+The ss command helps us to identify established TCP connections and their processes, reverse DNS is used in PTR records to associate the ip addresseswith hostnames,A browser can maintain simultaneous connections to different remote services, reverse DNS provides the clues about an infrastructure: In network investigations they are stronger when multiple observations are coorelated, including the DNS records, TCP connections, the TLS information and the application context
+### My Conclusion
+I have used ss and nslookup to investigate the 2 active HTTPS connections from my kali
+
 
 
 
