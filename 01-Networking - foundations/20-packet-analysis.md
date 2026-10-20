@@ -137,11 +137,13 @@ The HTTPs traffic was successfully captured and the TLS packets were inspected w
 The purpose is to see active HTTPS connections and compare their remote IP addresses with the reverse DNS results:
 ### 1 The Command:
 The command being ss-tnp inspects the active connections available then i observe 2 established TCP connections that were associated with firefox. ESR:- 10.80.205.104:43574-------34.107.245.93:443 and 10.80.205.104:58420--------140.82.113.26:443, both connections used the remote port 443 that is commonly associated with HTTPS
-![ss-tnp ](labs/01-network-troubleshooting/screenshots/SS -TNP.png)
+![ss-tnp ](labs/01-network-troubleshooting/screenshots/SS-TNP.png)
 ### 2 Investigating the 1st remote IP:
 The command being nslookup 140.82.113.26 the DNS results came to ib-140.82.113.26.iad.github.com: the hostname is associated with the github infrastructure 
+![nslookup 140.82.113.26 ](labs/01-network-troubleshooting/screenshots/nslookup140.82.113.26.png.png)
 ### 3 Investigating the 2nd remote IP 
 The command being nslookup 34.107.243.93 the reverse dns result came to 93.243.107.34.bc.google user content.com the hostname is under googles googleusercontent.com domain indicates the google associated infrastructre
+![nslookup-34.107.243.93](labs/01-network-troubleshooting/screenshots/nslookup140.82.113.26.png.png)
 ### Lessons Learnt
 The ss command helps us to identify established TCP connections and their processes, reverse DNS is used in PTR records to associate the ip addresseswith hostnames,A browser can maintain simultaneous connections to different remote services, reverse DNS provides the clues about an infrastructure: In network investigations they are stronger when multiple observations are coorelated, including the DNS records, TCP connections, the TLS information and the application context
 ### My Conclusion
