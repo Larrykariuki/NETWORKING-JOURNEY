@@ -145,7 +145,7 @@ The command being nslookup 140.82.113.26 the DNS results came to lb-140.82.113.2
 The command being nslookup 34.107.243.93 the reverse dns result came to 93.243.107.34.bc.google user content.com the hostname is under googles googleusercontent.com domain indicates the google associated infrastructre
 ![nslookup-34.107.243.93](labs/01-network-troubleshooting/screenshots/nslookup140.82.113.26.png)
 ### Lessons Learnt
-The ss command helps us to identify established TCP connections and their processes, reverse DNS is used in PTR records to associate the ip addresseswith hostnames,A browser can maintain simultaneous connections to different remote services, reverse DNS provides the clues about an infrastructure: In network investigations they are stronger when multiple observations are coorelated, including the DNS records, TCP connections, the TLS information and the application context
+The ss command helps us to identify established TCP connections and their processes, reverse DNS is used in PTR records to associate the ip addresses with hostnames,A browser can maintain simultaneous connections to different remote services, reverse DNS provides the clues about an infrastructure: In network investigations they are stronger when multiple observations are coorelated, including the DNS records, TCP connections, the TLS information and the application context
 ### My Conclusion
 I have used ss and nslookup to investigate the 2 active HTTPS connections from my kali
 
