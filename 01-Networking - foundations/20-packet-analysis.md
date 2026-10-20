@@ -147,7 +147,7 @@ The command being nslookup 34.107.243.93 the reverse dns result came to 93.243.1
 ### Lessons Learnt
 The ss command helps us to identify established TCP connections and their processes, reverse DNS is used in PTR records to associate the ip addresses with hostnames,A browser can maintain simultaneous connections to different remote services, reverse DNS provides the clues about an infrastructure: In network investigations they are stronger when multiple observations are coorelated, including the DNS records, TCP connections, the TLS information and the application context
 ### My Conclusion
-I have used ss and nslookup to investigate the 2 active HTTPS connections from my kali
+I have used ss and nslookup to investigate the 2 active HTTPS connections from my kali and compared the remote IP addresses with their reverse dns names and i learnt how these observations helps in network investigation
 
 
 
