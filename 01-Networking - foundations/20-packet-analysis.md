@@ -153,12 +153,14 @@ I have used ss and nslookup to investigate the 2 active HTTPS connections from m
 The purpose is to capture DNS queries and responses using tcpdump and to  understand how a computer resolves domain names to IP addresses
 ### 1 DNS capture 
 The command being sudo tcpdump -i wlan0 -nn -l 'udp port 53' uses wlan0 interface to monitor UDP traffic on port 53
+![dns capture](labs/01-network-troubleshooting/screenshots/DNS-CAPTURE.png)
 ### 2 Generate DNS query 
 The command being nslookup example.com the capture showed my laptop 10.80.205.104 sending DNS queries to the resolver 10.80.205.129 the command returned the following addresses
+![DNS QUERY](labs/01-network-troubleshooting/screenshots/DNS-QUERY.png)
 ### IPV4 addresses
 That is 172.66.147.243 and 104.20.23.154
 ### IPV6 addresses 
-That is 2606:4700:10::ac42:9343 and 2606:4700:10::6814:179 a in wwhich the results matched the A and AAAA records that were observed in the tcpdump capture
+That is 2606:4700:10::ac42:9343 and 2606:4700:10::6814:179 a in which the results matched the A and AAAA records that were observed in the tcpdump capture
 ## Lessons Learnt 
 tcpdump monitors DNS traffic on a network interface selected, DNS uses UDP port 53, A record contains IPV4 address, AAAA record contains IPV6 address, DNS query IDS helps one to associate responses with their requests
 ## Conclusion 
