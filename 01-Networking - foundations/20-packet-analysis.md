@@ -136,7 +136,7 @@ The HTTPs traffic was successfully captured and the TLS packets were inspected w
 ### Objecives
 The purpose is to see active HTTPS connections and compare their remote IP addresses with the reverse DNS results:
 ### 1 The Command:
-The command being ss-tnp inspects the active connections available then i observe 2 established TCP connections that were associated with firefox. ESR:- 10.80.205.104:43574-------34.107.245.93:443 and 10.80.205.104:58420--------140.82.113.26:443, both connections used the remote port 443 that is commonly associated with HTTPS
+The command being ss-tnp inspects the active connections available then i observe 2 established TCP connections that were associated with firefox. ESR:- 10.80.205.104:43750-------34.107.245.93:443 and 10.80.205.104:58420--------140.82.113.26:443, both connections used the remote port 443 that is commonly associated with HTTPS
 ![ss-tnp ](labs/01-network-troubleshooting/screenshots/SS-TNP.png)
 ### 2 Investigating the 1st remote IP:
 The command being nslookup 140.82.113.26 the DNS results came to lb-140.82.113.26.iad.github.com: the hostname is associated with the github infrastructure 
