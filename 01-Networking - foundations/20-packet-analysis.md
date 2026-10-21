@@ -107,7 +107,7 @@ Before assuming that a network activity is suspicious one should collect evidenc
 The objective here is to look a servers TLS certificate and understand how it helps to secure HTTPS connections, the TLS is the security protocol for HTTPS connections
 ### The Command
 The command to be used is openssl s_client -connect github.com:443 -servername github.com </dev/null. This command means as follows openssl s-client connects to the TLS server and displays the handshake and the certificate information
-![Inspecting https and tls certs](labs/01-network-troubleshooting/screenshots/TLS-AND-HTTPS-CERTIFICATION.png)
+![Inspecting https and tls certs](labs/01-network-troubleshooting/screenshots/TLS-AND-HTTPS-CERTIFICATE.png)
 ### Extracting the certificate details 
 The command used is openssl s-client-connect github.com:443 -servername github.com <dev/null 2>/dev/null | openssl x509 -noout-subject-issuer-dates where the openssl x509 extracts the fields from the certificate
 ![CERTIFICATE EXTRACTION](labs/01-network-troubleshooting/screenshots/CERTIFICATE-EXTRACTION.png)
