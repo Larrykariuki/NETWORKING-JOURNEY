@@ -165,7 +165,17 @@ That is 2606:4700:10::ac42:9343 and 2606:4700:10::6814:179 a in which the result
 tcpdump monitors DNS traffic on a network interface selected, DNS uses UDP port 53, A record contains IPV4 address, AAAA record contains IPV6 address, DNS query IDS helps one to associate responses with their requests
 ## Conclusion 
 tcpdump and nslookup together enables one to observe DNS traffic and verify the return addresses, observed both A and AAAA queries and I have learnt how DNS help devices to obtain IP addresses for domain name
-
+## Practical lab 11: DNS Caching and TTL
+### Objective
+The purpose is to understand why DNS answers can be reused and why they can change with time, TTL stands for time to live and in which in DNS it tells a resolver how long a DNS record may be cached before being refreshed 
+### Step 1: Query the DNS records 
+The command being dig example.com from my observations the TTL was 226 seconds, IPV4 addresses returned 104.20.23.154 and 172.66.147.243, the TTL of 226 seconds is the remaining cache lifetime reported by the resolver
+### Step 2: Comparing the TTL values across 2 queries
+When I ran dig example.com 2 times using the configured DNS resolver 10.80.205.129, the first query 2 A records with a TTL of 226 seconds. The 2nd query in 4 min and 23 seconds later returned the same 2 IPV4 addresses with a TTL of 244 seconds, the TTL increased instead of decreasing which indcates that the resolver refreshed the records
+### My Observations 
+When I queried the A records for example.com using the configured DNS resolver at 10.80.205.129 using the command dig@10.80.205.129 example.com A +noall +answer the queries returned the 2 IPV4 addresses that is 104.20.23.154 and 172.66.147.243, this command is a more controlled command to identify the TTL values. So the TTL values that I observed were 67,229,157,154 and 142, the TTL decreased from 157 to 154 to 142 seconds between 3 observations, however there was increse between earlier queries which may mean a different cache state or a refreshed DNS answer
+## Lessons Learned 
+DNS TTL is expressed in seconds and indicated just how long a DNS record may remain cahed before it has to be refreshed, A remaining TTL decreases as time passes but then a later query can return a higher TTL if a fresh answer is obtained by the resolver. I have learned and understood that DNS answers can remain the same even though their TTL values can differ
 
 
 
