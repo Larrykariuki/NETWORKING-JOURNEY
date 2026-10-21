@@ -178,6 +178,23 @@ When I queried the A records for example.com using the configured DNS resolver a
 ![DNS TTL OBSERVATIONS](labs/01-network-troubleshooting/screenshots/DNS-TTL-OBSERVATIONS.png)
 ## Lessons Learned 
 DNS TTL is expressed in seconds and indicated just how long a DNS record may remain cahed before it has to be refreshed, A remaining TTL decreases as time passes but then a later query can return a higher TTL if a fresh answer is obtained by the resolver. I have learned and understood that DNS answers can remain the same even though their TTL values can differ
+## Practical lab 12: Investigating HTTPS connections and TCP states 
+### My Objective
+The purpose of this lab is to inspect live TCP connections on kali, identify connections used for HTTPS and observe the TCP  connection states
+### Step 1: Inspecting the TCP connections
+The command being ss -tnp: Initially the command showed no TCP  connections but after opening a webpage in firefox it displayed TCP connections that were associated with the firefox-esr process
+### Step 2: Identifying HTTPS-related connections 
+The output produced ESTAB 0 0 10.80.205.104:39546 34.107.243.93:443 
+### from Observations
+10.80.205.104 is my laptops IP address, 39546 is the temporary TCP port, 34.107.243.93 is the remote IP address, 443 is the remote TCP port used for HTTPS connections, ESTAB means the TCP  connection is established and the receive and send ques were both 0
+### Step 3: Filtering Connections by port destination
+The command is ss -tnp '(dport = :443)' the output filtered displayed TCP connections whose port destination was 443(HTTPS) and the results included established connections which could chaange as firefox opens and closes connections
+### Observing Live Connection states
+The Command being watch -n 1 'ss -tnp' is used for live display which showed an established connection from 10.80.205.104:39546 to 34.107.243.93:443, in an earlier output i saw SYN-SENT and FIN-WAIT-1 states
+## Lessons learned
+The ss command usually displays TCP connection information, ESTAB means that the TCP  connection is established, SYN-SENT means a connection attempt is waiting a response, FIN-WAIT-1 means the local endpoint started the TCP  clossing process, The ports 80 and 443 are for HTTP and HTTPS respectively, the watch command helps to observe how network connections can change over time in real time, if a TCP connection is established it does not mean necessarily that data is flowing continously 
+## My conclusions
+ss and watch can be used to inspect TCP connections that are created while browsing in firefox, I have identified HTTPS associated connections, observed different TCP states and i have confirmed that one connection remained established across repeated observations
 
 
 
