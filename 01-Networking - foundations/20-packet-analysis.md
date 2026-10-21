@@ -187,7 +187,7 @@ The command being ss -tnp: Initially the command showed no TCP  connections but 
 ### Step 2: Identifying HTTPS-related connections 
 The output produced ESTAB 0 0 10.80.205.104:39546 34.107.243.93:443 
 ### from Observations
-10.80.205.104 is my laptops IP address, 39546 is the temporary TCP port, 34.107.243.93 is the remote IP address, 443 is the remote TCP port used for HTTPS connections, ESTAB means the TCP  connection is established and the receive and send ques were both 0
+10.80.205.104 is my laptops IP address, 33586 is the temporary TCP port, 34.107.243.93 is the remote IP address, 443 is the remote TCP port used for HTTPS connections, ESTAB means the TCP  connection is established and the receive and send ques were both 0
 ### Step 3: Filtering Connections by port destination
 The command is ss -tnp '(dport = :443)' the output filtered displayed TCP connections whose port destination was 443(HTTPS) and the results included established connections which could chaange as firefox opens and closes connections
 ![FILTERING HTTP CONNECTION](labs/01-network-troubleshooting/screenshots/FILTERING-HTTP-CONNECTION.png)
