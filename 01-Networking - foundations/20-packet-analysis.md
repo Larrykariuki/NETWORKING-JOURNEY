@@ -202,9 +202,11 @@ ss and watch can be used to inspect TCP connections that are created while brows
 ### My Objective:
 I want to capture the TCP traffic that is asociated with HTTPS using tcpdump tool and to identify the TCP 3-way handshake
 ### Step 1: Capture TCP traffic on port 443
-Step 1 is to capture the TCP traffic on port 443 the command being sudo tcpdump -i wlan0 -nn -c20 'tcp port 443', the observation is that the capture showed packets travelling between my kali machine of IP address 10.80.205.104 and remote servers using TCP port 443, the output displayed TCP flags, sequence numbers, acknowledgement numbers,payload lengths
+Step 1 is to capture the TCP traffic on port 443, the command being sudo tcpdump -i wlan0 -nn -c20 'tcp port 443', the observation is that the capture showed packets travelling between my kali machine of IP address 10.80.205.104 and remote servers using TCP port 443, the output displayed TCP flags, sequence numbers, acknowledgement numbers,payload lengths
+![CAPTURE-TCP-CONNECTION](labs/01-network-troubleshooting/screenshots/CAPTURE-TCP-CONNECTION.png)
 ### Step 2: Filter for TCP C onnection setup packets
 The command is sudo tcpdump -i Wlan0 -nn -c 30 tcp port 443 and (tcp[tcpflags] & (tcp-syn|tcp-ack) !=0) from my observation is that the first attempt produced a filter syntax error. After I corrected my command, the tcpdump tool successfully captured 30 packets. The output included packets that are associated with the connection between 10.80.205.104 and 151.101.193.91
+![CAPTURE-CONNECTION-SETUP](labs/01-network-troubleshooting/screenshots/CAPTURE-CONNECTION-SETUP.png)
 ### Step 3: Identify the TCP 3-WAY handshake
 The capture showed these following sequence for the connection using local port 39264 and remote port 443, (1) SYN - Means that my laptop requested a TCP connection, SYN-ACK - Means that the remote endpoint responded with SYN and ACK flags and ACK - Which means that my laptop acknowledged the responce and completed the 3 way handshake 
 ### Step 4: Interpreting the other packet details 
