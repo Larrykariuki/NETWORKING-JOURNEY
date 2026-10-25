@@ -1,7 +1,7 @@
 ## DNS 
 Stands for Domain Name system it translates the human readable domain names into IP addresses that computers use to communicate across the network, instead of one remembering an IP Address he/she can us a domain name
 ### How the DNS work
-When I enter a domain name in a browser,the device needs to find Its IP address www.example.com-------DNS------93.184.216.34-------server.The browser and the operating system first checks the local caches and other sources that are configured  and if the answer is not available then the device sends a query to a recursive DNS resolver that is provided by an organization or network operator or the public DNS service and if the resolver does not have the catched answer then it can query the DNS heirachy,the DNS does not establish the web connection but provide the information that the browser can use to connect to a service 
+When I enter a domain name in a browser,the device needs to find Its IP address www.example.com-------DNS------93.184.216.34-------server. The browser and the operating system first checks the local caches and other sources that are configured  and if the answer is not available then the device sends a query to a recursive DNS resolver that is provided by an organization or network operator or the public DNS service and if the resolver does not have the catched answer then it can query the DNS heirachy,the DNS does not establish the web connection but provide the information that the browser can use to connect to a service 
 ### DNS records
 It uses different types of records for different purposes
 ### A record
