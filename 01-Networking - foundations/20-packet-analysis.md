@@ -4,7 +4,7 @@ This is the capturing and examining of network packets in order for someone to u
 ### Wireshark
 This is a graphical tool that is used to capture the packets in the network and can help us to identify the source and the destination of IP addresses, the communication protocals, the tcp and udp ports, the dns requests and responces and unusual traffic
 ### Tcpdump
-This is a commandl-ine tool in that is used to capture and inspect the traffic in the network and is very usefull when u are working with a linux terminal like kali linux or ubuntu and other linux machines
+This is a command line tool in that is used to capture and inspect the traffic in the network and is very useful when u are working with a linux terminal like kali linux or ubuntu and other linux machines
 ### Example: DNS traffic investigation 
 Lets say my laptop is making some unexpected DNS requests then i can use a packet analysis tool such as tcpdump or wireshark to investigate which domains names are communicating on the network, which dns are being requested and the time the requests are occuring 
 ## Importance of packet analysis in security 
@@ -198,6 +198,21 @@ The Command being watch -n 1 'ss -tnp' is used for live display which showed an 
 The ss command usually displays TCP connection information, ESTAB means that the TCP  connection is established, SYN-SENT means a connection attempt is waiting a response, FIN-WAIT-1 means the local endpoint started the TCP  clossing process, The ports 80 and 443 are for HTTP and HTTPS respectively, the watch command helps to observe how network connections can change over time in real time, if a TCP connection is established it does not mean necessarily that data is flowing continously 
 ## My conclusions
 ss and watch can be used to inspect TCP connections that are created while browsing in firefox, I have identified HTTPS associated connections, observed different TCP states and i have confirmed that one connection remained established across repeated observations
+## Practical lab 13: Capturing the HTTPS Traffic and observing the TCP handshake
+### My Objective:
+I want to capture the TCP traffic that is asociated with HTTPS using tcpdump tool and to identify the TCP 3-way handshake
+### Step 1: Capture TCP traffic on port 443
+Step 1 is to capture the TCP traffic on port 443 the command being sudo tcpdump -i wlan0 -nn -c20 'tcp port 443', the observation is that the capture showed packets travelling between my kali machine of IP address 10.80.205.104 and remote servers using TCP port 443, the output displayed TCP flags, sequence numbers, acknowledgement numbers,payload lengths
+### Step 2: Filter for TCP C onnection setup packets
+The command is sudo tcpdump -i Wlan0 -nn -c 30 tcp port 443 and (tcp[tcpflags] & (tcp-syn|tcp-ack) !=0) from my observation is that the first attempt produced a filter syntax error. After I corrected my command, the tcpdump tool successfully captured 30 packets. The output included packets that are associated with the connection between 10.80.205.104 and 151.101.193.91
+### Step 3: Identify the TCP 3-WAY handshake
+The capture showed these following sequence for the connection using local port 39264 and remote port 443, (1) SYN - Means that my laptop requested a TCP connection, SYN-ACK - Means that the remote endpoint responded with SYN and ACK flags and ACK - Which means that my laptop acknowledged the responce and completed the 3 way handshake 
+### Step 4: Interpreting the other packet details 
+Flag - This indicates PSH and ACK flags are set, Length0 - Means the packet contains 0 TCP payload bytes, seq and ack are TCP sequence and acknowledgement numbers, 443 is the TCP port used for  HTTPs, the final capture reported 30 packets captured and o packets dropped by the kernel
+## Lessons Learnt 
+Tcpdump Captures  real TCP traffic and display the information that is needed to investigate network connections, A TCP connection known as a 3-WAY handshake begins with SYN, SYN-ACK and ACK packets , once a TCP is established the endpoints can then proceed with TLS negotiation and encrypted HTTPS connection, I have also learnt that a packet filter must use correct syntax and that TCP flags help to distinguish connection setup packets from other traffic 
+## My Conclusion 
+The TCP  traffic was successfully captured on port 443 and I identified the packets that were corresponding to the 3-way handshake, this lab exercise has helped me to connect the TCP states that I have observed with ss to the actual packets visible in tcpdump. The capture showed TCP connection activity, but did not reveal the contents of encrypted HTTPS application data
 
 
 
