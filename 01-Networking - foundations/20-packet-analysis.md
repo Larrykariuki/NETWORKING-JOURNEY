@@ -220,8 +220,10 @@ The TCP  traffic was successfully captured on port 443 and I identified the pack
 The purpose of the lab is to observe the DNS queries and responses and to inspect TCP connections that are associated with HTTPS
 ## Step 1 : Capturing DNS traffic:
 The command being sudo tcpdump -i wlan0 -nn -c 10 ;port 53', from my capture I saw that DNS queries from my kali linux machine of IP address 10.155.169.104 to the resolver at 10.155.169.127:53. The queries included A and AAAA records for mozilla related domain names, and the responses included IPV4 addresses, IPV6 addresses and CNAME records
+![DNS TRAFFIC CAPTURE](labs/01-network-troubleshooting/screenshots/DNS-TRAFFIC-CAPTURE.png)
 ## Step 2: Inspecting HTTPS-related connections
 The command being ss -tnp dport:443, the output showed an estaablished connection Estab 0 . 0 10.155.169.104:45470, 34.107.243.93:443, the connection was associated with firefox ESR. The remote port is 443 used for HTTPS 
+![VERRIFY-HTTPS-CONNECTION](labs/01-network-troubleshooting/screenshots/VERIFY-HTTPS-CONNECTION.png)
 ## Step 3: Capturing the DNS and TCP Observations
 The DNS captured showed the answers for many mozilla-related domain names, while the tcp connectionshowed was to 34.107.243.93.443. The remote IP address did not match the IPV4 address returned for mozilla .map.fasltly.net in the captured DNS response because the capture contained queries for multiple names and DNS answers and TCP connections were observed seperately, I failed to establish which DNS response led to this particular connection
 ## Lessons Learnt
