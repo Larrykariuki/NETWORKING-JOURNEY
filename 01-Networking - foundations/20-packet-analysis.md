@@ -215,6 +215,19 @@ Flag - This indicates PSH and ACK flags are set, Length0 - Means the packet cont
 Tcpdump Captures  real TCP traffic and display the information that is needed to investigate network connections, A TCP connection known as a 3-WAY handshake begins with SYN, SYN-ACK and ACK packets , once a TCP is established the endpoints can then proceed with TLS negotiation and encrypted HTTPS connection, I have also learnt that a packet filter must use correct syntax and that TCP flags help to distinguish connection setup packets from other traffic 
 ## My Conclusion 
 The TCP  traffic was successfully captured on port 443 and I identified the packets that were corresponding to the 3-way handshake, this lab exercise has helped me to connect the TCP states that I have observed with ss to the actual packets visible in tcpdump. The capture showed TCP connection activity, but did not reveal the contents of encrypted HTTPS application data
+## Practical lab 14: Observing both DNS and HTTPS together 
+### My Objective 
+The purpose of the lab is to observe the DNS queries and responses and to inspect TCP connections that are associated with HTTPS
+## Step 1 : Capturing DNS traffic:
+The command being sudo tcpdump -i wlan0 -nn -c 10 ;port 53', from my capture I saw that DNS queries from my kali linux machine of IP address 10.155.169.104 to the resolver at 10.155.169.127:53. The queries included A and AAAA records for mozilla related domain names, and the responses included IPV4 addresses, IPV6 addresses and CNAME records
+## Step 2: Inspecting HTTPS-related connections
+The command being ss -tnp dport:443, the output showed an estaablished connection Estab 0 . 0 10.155.169.104:45470, 34.107.243.93:443, the connection was associated with firefox ESR. The remote port is 443 used for HTTPS 
+## Step 3: Capturing the DNS and TCP Observations
+The DNS captured showed the answers for many mozilla-related domain names, while the tcp connectionshowed was to 34.107.243.93.443. The remote IP address did not match the IPV4 address returned for mozilla .map.fasltly.net in the captured DNS response because the capture contained queries for multiple names and DNS answers and TCP connections were observed seperately, I failed to establish which DNS response led to this particular connection
+## Lessons Learnt
+The DNS helps applications to obtain addressing information while TCP establishes connections to remote endpoints. HTTPS uses TCP port 443, followed by TLS negotiation when using TCP based HTTPS. Observing DNS and TCP traffic seperately helps one to investigate network activity, but correlating a particular DNS answer with a connection requires matching the relevant domain, IP address, timing and connection evidence 
+## Conclusion
+I have captured DNS traffic and have inspected and established HTTPS associated TCP connection on kali linux. The lab exercise has helped me to understand how name resolution and net connections relate, while recognizing the limits of evidence gathered in seperate screenshots
 
 
 
