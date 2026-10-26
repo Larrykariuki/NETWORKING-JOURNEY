@@ -10,7 +10,7 @@ My goal is to build a strong networking foundation from scratch that i can use i
 -understanding and learning subnetting,
 -learning practical networking troubleshooting skills,
 -practice using networking tools,
--lean packet analysis with Wireshark,
+-learn packet analysis with Wireshark,
 -build practical networking labs,
 -use the networking knowledge as a foundation for cybersecurity
 ## Learning Progress
