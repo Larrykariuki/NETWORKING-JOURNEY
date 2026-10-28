@@ -230,7 +230,18 @@ The DNS captured showed the answers for many mozilla-related domain names, while
 The DNS helps applications to obtain addressing information while TCP establishes connections to remote endpoints. HTTPS uses TCP port 443, followed by TLS negotiation when using TCP based HTTPS. Observing DNS and TCP traffic seperately helps one to investigate network activity, but correlating a particular DNS answer with a connection requires matching the relevant domain, IP address, timing and connection evidence 
 ## Conclusion
 I have captured DNS traffic and have inspected and established HTTPS associated TCP connection on kali linux. The lab exercise has helped me to understand how name resolution and net connections relate, while recognizing the limits of evidence gathered in seperate screenshots
-
-
-
-
+## Practical lab 15: Investigating HTTP traffic
+### My Objective
+The purpose for this lab is to capture the HTTP traffic using tcpdump packet analysis tool and inspect a readable HTTP request and a server response 
+### Step 1: Capture the traffic on port 80 (HTTP)
+The command is sudo tcpdump -i wlan0 -nn -c 10 'port 80' the capture reveled  traffic between my kali laptop at 10.155.169.104 and the remote server at 172.66.147.243 using TCP port 80 (HTTP)
+### Step 2: Observing the TCP handshake 
+The output showed SYN, SYN-ACK, and ACK packets for the connection using local port 39634 and remote port 80. These packets represents the normal TCP 3-WAY handshake
+### Step 3: Inspecting the HTTP request 
+The capture includes HTTP:GET/HTTP/1.1, this was a request for the root resource at /. The request was visible in the packet capture because ordinary HTTP does not encrypt its app data
+### Step 4: Inspecting the HTTTP response 
+Where the capture included HTTP:HTTP/1.1 200 OK, the response shows that server successfully handled the HTTP request. The Captured response packet contained 756 bytes TCP payload , which may be part of the HTTP response
+## Lessons Learnt 
+HTTP uses TCP port 80 and its application  requests and responses can be readable in a packet capture. The TCP  handshake establishes the connection before THE HTTP data is exchanged. A get request  asks for a resource, while an HTTP  200 ok status shows a successful response. HTTP  uses TCP port 443 and protects applicaton data using TLS which makes its application requests and responses unreadable in a packet capture, though some connection metadata may still remain visible
+## Conclusion
+I have successfully captured a HTTP traffic and I have identified the TCP handshake, a get request, and an HTTP 200 OK response. This lab exercise has helped me to understand the difference between a readable HTTP trafic and a TLS-protected HTTPS traffic  
