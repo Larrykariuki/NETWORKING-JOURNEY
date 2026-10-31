@@ -294,6 +294,19 @@ The connection from 10.209.157.104:58380 to 34.107.243.93:443 was in the ESTAB s
 ss -tan displays TCP socket states and endpoint. LISTEN indicates a listening socket, while ESTAB indicates an established TCP connection, I have also learnt that identifying the process behind a listening port helps us to distinguish between known services from unknown  ones. A local service that is listening on 127.0.0.1 is not directly listening on all network interfaces
 ## My Conclusion
 I have used ss -tan  to inspect TCP connections and identified ollama as the service that is listening on localhost port 11434. This exercise has helped me to practice and to understand basic network - service identification and TCP connection state analysis 
+## Lab 19: Inspecting listening Network Services
+### Objective
+My objective is to inspect the listening TCP and UDP sockets on kali linux and to identify the processes using them
+### Step 1: Listing listening Sockets
+The command being sudo ss -lntup lists the listening sockets  and the output showed Ollama listening on TCP port 11434 and several UDP Sockets owned by a python process with PID 7193
+### Step 2: Identifying the python process
+The command being ps-fp 7193, the output identified the process as python 3/usr/bin/wsdd....no-host--discovery ---listen/run/user/1000/gvfsd/wsdd. Which confirmed that the python process was running wsdd that stands for web services Dynamic discovery daemon which is used to find devices on the local area network
+### Step 3: Understanding the Network activity
+The UDP sockets included port 3702 and multicast address such as 239.255.255.25 and (ff02::c) which are consistent with WS-Discovery traffic that helps devices to discover compatible services on a local network. Ollama was listening on : 127.0.0.1:10434 which means that its TCP service was bound to the loopback interface and was listening for connections from the local computer 
+## Lessons Learnt
+I have learnt how to inspect listening TCP and UDP sockets using ss, How to identify which process owns a network socket, UDP sockets can appear as UCONN because UDP is connectionless, WS-Discovery uses UDP port 3702 for local network discovery, 127.0.0.1 refers to the local computer, an open or listening port does not automatically mean there is malicious activity going on
+## My Conclusion 
+I have successfully inspected the listening network services on kali linux and identified the processes behind the sockets. I have also found out that the UDP discovery traffic belonged to wsdd, while ollama was listening on the local loopback interface, the exercise has taught me why cybersecurity analysts should first identify and understand network services before deciding whether there is suspicious activity
 
 
 
