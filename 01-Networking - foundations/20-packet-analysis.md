@@ -245,4 +245,10 @@ Where the capture included HTTP:HTTP/1.1 200 OK, the response shows that server 
 ## Lessons Learnt 
 HTTP uses TCP port 80 and its application  requests and responses can be readable in a packet capture. The TCP  handshake establishes the connection before the HTTP data is exchanged. A get request  asks for a resource, while an HTTP  200 ok status shows a successful response. HTTP  uses TCP port 443 and protects applicaton data using TLS which makes its application requests and responses unreadable in a packet capture, though some connection metadata may still remain visible
 ## Conclusion
-I have successfully captured a HTTP traffic and I have identified the TCP handshake, a get request, and an HTTP 200 OK response. This lab exercise has helped me to understand the difference between a readable HTTP trafic and a TLS-protected HTTPS traffic  
+I have successfully captured a HTTP traffic and I have identified the TCP handshake, a get request, and an HTTP 200 OK response. This lab exercise has helped me to understand the difference between a readable HTTP trafic and a TLS-protected HTTPS traffic 
+## Practical lab 16: Inspecting the HTTP headers
+### Objective
+The purpose of this lab is to capture the HTTP traffic and identify requests and response headers using tcpdump tool
+### Step 1: Capturing the HTTP traffic
+The command being  sudo tcpdump -i wlan0 -nn -A -s o -c 20 'tcp port 80'
+
