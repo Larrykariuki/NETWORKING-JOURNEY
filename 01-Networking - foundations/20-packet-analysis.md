@@ -268,6 +268,25 @@ The purpose is to compare HTTPS and HTTPS using tcpdump packet analysis tool and
 ### Step 1: Capturing the HTTP traffic
 The Command being sudo tcpdump -i wlan0 -nn -A -s 0 -c 20 'tcp port 443'
 ![COMPARING-HTTP-HTTPS](labs/01-network-troubleshooting/screenshots/HTTP-TRAFFIC-INVESTIGATION.png)
+### My Observations
+The Capture recorded 20 packets that involves my machine at 10.209.157.104 and a remote endpoint at 34.149.226.178:443
+### Step 2: Inspecting the packet output 
+The output displayed printable characters including TCP flags, IP addresses, temporary ports, sequence and acknowledgement numbers and packet payloads
+### The Hostname
+The content.signature.2.cdn.mozilla.net was shown in the output. This shows that some hostname-related info can be visible in a captured traffic
+### Step 3 : Comparing with the HTTP capture 
+In lab 16, I could read the request line GET/HTTP/1.1, the host header, and the servers HTTP response but in this HTTPS capture, I did not see the HTTP request headers displayed as readable plaintext. HTTPS protects HTTP application data using TLS after encryption begins
+## Lessons Learnt 
+I have Learnt that packet captures reveal IP addresses ports, TCP flags and connection metadata even when an application uses HTTPS. Unlike ordinary HTTP, HTTPS encrypts application data using TLS, making HTTP requests and headers unreadable as plaintext in a normal capture of encrypted traffic. Some TLS handshake information or hostname-related metadata can still be visible depending on the protocol and the configuration 
+## My Conclusion 
+I have successfully captured HTTPS traffic and compared its visibility with the HTTP traffic from lab 16. The Lab exercise has helped me to understand the difference between visible network metadata and encrypted application content.
+## Practical lab 18: Investigating TCP connection states
+## My Objective 
+The objective of this lab is to inspect TCP sockets on kali linux and identify established connections and locally listening services 
+### Step 1 : Inspecting TCP sockets
+The command being ss -tan, the output identified 2 TCP socket states: that is LISTEN on 127.0.0.1:11434, ESTAB from 10.209.157.104:58380 to 34.107.243.93:443
+
+
 
 
 
