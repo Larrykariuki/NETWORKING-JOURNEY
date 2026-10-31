@@ -299,7 +299,7 @@ I have used ss -tan  to inspect TCP connections and identified ollama as the ser
 My objective is to inspect the listening TCP and UDP sockets on kali linux and to identify the processes using them
 ### Step 1: Listing listening Sockets
 The command being sudo ss -lntup lists the listening sockets  and the output showed Ollama listening on TCP port 11434 and several UDP Sockets owned by a python process with PID 7193
-![INSPECTING-LISTENING-NETWORK-SERVICES](labs/01-network-troubleshooting/screenshots/INSPECTING-TCP-SOCKETS.png)
+![INSPECTING-LISTENING-NETWORK-SERVICES](labs/01-network-troubleshooting/screenshots/INSPECTING-LISTENING-NETWORK-SERVICES.png)
 ### Step 2: Identifying the python process
 The command being ps-fp 7193, the output identified the process as python 3/usr/bin/wsdd....no-host--discovery ---listen/run/user/1000/gvfsd/wsdd. Which confirmed that the python process was running wsdd that stands for web services Dynamic discovery daemon which is used to find devices on the local area network
 ### Step 3: Understanding the Network activity
