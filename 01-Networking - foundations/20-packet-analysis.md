@@ -12,17 +12,17 @@ It helps us to troubleshoot network connectivity,identify suspicious traffic, an
 ## Lessons learnt
 Packet analysis involves the examining of the network packets in order to understand how the devices are communicating across the network. Wireshark is a tool for packet analysis and it provides a graphical user interface for inspecting packets while tcpdump provide the command-line packet capture and inspection. Packet analysis is very usefull for troubleshooting networks and investigating security instances
 ## Practical lab 1: Capturing the DNS traffic with tcpdump
-The objective is to capture and inspect DNS requests and responses on my kali linux machine machine. The tools to be used are kali linux operating system, tcpdump, and nslookup 
+The objective is to capture and inspect DNS requests and responses on my kali linux machine. The tools to be used are kali linux operating system, tcpdump, and nslookup 
 ## Commands used
 ### checking the network interface
-the command used to check the network interface are ip -br  address
+The command used to check the network interface are ip -br  address
 ![network interface](labs/01-network-troubleshooting/screenshots/ip-br-address-1.png)
 ip - is the tool for managing network on linux, address means show the ip addresses and -br means breif in that the computer prints one short line per connection
 the output is eth0 which is the interface for ethernet cable is down, wlan0 is the wifi and the lo is the loopback interface which is the computer talking to intself, 10.80.205.104/24  is the ipv4 address the first 3 numbers identify the network while the last one identifies the device that is what /24 means the interface to capture is wlan0 because it is the only one that is carrying traffic
 ### Capture the DNS traffic
 the command being sudo tcpdump -i wlan0 -nn -vv port 53
 ![DNS traffic capture](labs/01-network-troubleshooting/screenshots/dns-traffic-capture.png)
-this command records the DNS traffic going through my wifi, sudo means run it as the administrator, tcpdump is the too for packet analysis in cmd, -i wlan0 listens on the wifi interface, -nn this shows the raw IP and the numerical port numbers, -vv this one gives extra details, port 53 shows only the DNS traffic, because 53 is associated with DNS in the output the > is when u can tell queries from replies if the 53 port is on the right of the arrow it is ur request going to the server and if it is vice versa it is the server answering back to you
+this command records the DNS traffic going through my wifi, sudo means run it as the administrator, tcpdump is the tool for packet analysis in cmd, -i wlan0 listens on the wifi interface, -nn this shows the raw IP and the numerical port numbers, -vv this one gives extra details, port 53 shows only the DNS traffic, because 53 is associated with DNS in the output the > is when u can tell queries from replies if the 53 port is on the right of the arrow it is ur request going to the server and if it is vice versa it is the server answering back to you
 ### Save a packet capture
 sudo tcpdump -nn -vv -r /home/kali/dns-capture.pcap this command replays a packet that has been captured by the command sudo tcpdump -i wlan0 -nn port 53 -w dns-capture.pcap and also i noticed that u can filter while reading, for instance tcpdump -nn -r dns-capture.pcap port 53
 ![save packet capture ](labs/01-network-troubleshooting/screenshots/save-packet.png)
