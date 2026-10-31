@@ -250,5 +250,24 @@ I have successfully captured a HTTP traffic and I have identified the TCP handsh
 ### Objective
 The purpose of this lab is to capture the HTTP traffic and identify requests and response headers using tcpdump tool
 ### Step 1: Capturing the HTTP traffic
-The command being  sudo tcpdump -i wlan0 -nn -A -s o -c 20 'tcp port 80'
+The command being  sudo tcpdump -i wlan0 -nn -A -s 0 -c 20 'tcp port 80'
+![INSPECTING-HTTP-HEADRES](labs/01-network-troubleshooting/screenshots/HTTP-HEADERS.png)
+### Observations
+The capture showed HTTP traffic between the kali machine at 10.155.169.104 and the remote server at 104.20.23.254 on TCP port 80
+### Step 2: Inspect the http request 
+The request included:GET/HTTP/1.1, Host:example.com, user.Agent:Mozilla/5.0.......firefox/140.0, Accept Language:en-us, en: q=0.5, Accept-Encoding: gzip, deflate, connection:keep-alive. The GET method requested the root resource, The Host header identified example.com, while the user agent and other headers described browser capabilities and preferences
+### Step 3: Inspecting the Server response
+The capture showed HTTP/1.1 304 not modified which the status means that the server had considered the cached resource still valid under the requsts validation conditions and so the browser could reuse its cached copy rather than downloading the resource again
+## Lessons Learnt
+HTTP headers carry information about requests,browser capabilities, content preference and connection behaviour because ordinary ordinary HTTP does not provide TLS encryption. The headers can be readable in a packet capture, I have also learnt that HTTP status code 304 is related to cache validation and does not really indicate a server error
+## Conclusion
+I captured successfully the HTTP traffic and identified the request headers and server response.This lab has helped me understand how HTTPS is important for protecting that information in transit
+## Practical lab 17: Comparing HTTP and HTTPS packets
+### My Objective
+The purpose is to compare HTTPS and HTTPS using tcpdump packet analysis tool and see the effects of the TLS encryption
+### Step 1: Capturing the HTTP traffic
+The Command being sudo tcpdump -i wlan0 -nn -A -s 0 -c 20 'tcp port 443'
+![COMPARING-HTTP-HTTPS](labs/01-network-troubleshooting/screenshots/HTTP-TRAFFIC-INVESTIGATION.png)
+
+
 
