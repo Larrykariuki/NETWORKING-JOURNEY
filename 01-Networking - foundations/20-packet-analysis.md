@@ -285,6 +285,15 @@ I have successfully captured HTTPS traffic and compared its visibility with the 
 The objective of this lab is to inspect TCP sockets on kali linux and identify established connections and locally listening services 
 ### Step 1 : Inspecting TCP sockets
 The command being ss -tan, the output identified 2 TCP socket states: that is LISTEN on 127.0.0.1:11434, ESTAB from 10.209.157.104:58380 to 34.107.243.93:443
+![INSPECTING-TCP-SOCKETS](labs/01-network-troubleshooting/screenshots/INSPECTING-TCP-SOCKETS.png)
+### Step 2 : Investigating the Listening port
+I identified that the listening port 11434 was Ollama which is a local AI model service, the address 127.0.0.1 is the loopback address. Binding to this address means that the listener accepts connections through the local machines loopback interface instead of listening directly on all network interfaces
+### Step 3 : Interpreting the connections established
+The connection from 10.209.157.104:58380 to 34.107.243.93:443 was in the ESTAB state. Port 443 is used for HTTP connections, The Recv.Q and send.Q values were all 0 which means no data was queued in the socket during the inspection
+## Lessons learnt
+ss -tan displays TCP socket states and endpoint. LISTEN indicates a listening socket, while ESTAB indicates an established TCP connection, I have also learnt that identifying the process behind a listening port helps us to distinguish between known services from unknown  ones. A local service that is listening on 127.0.0.1 is not directly listening on all network interfaces
+## My Conclusion
+I have used ss -tan  to inspect TCP connections and identified ollama as the service that is listening on localhost port 11434. This exercise has helped me to practice and to understand basic network - service identification and TCP connection state analysis 
 
 
 
