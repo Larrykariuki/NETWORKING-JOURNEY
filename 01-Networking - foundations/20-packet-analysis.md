@@ -308,6 +308,19 @@ The UDP sockets included port 3702 and multicast address such as 239.255.255.25 
 I have learnt how to inspect listening TCP and UDP sockets using ss, How to identify which process owns a network socket, UDP sockets can appear as UCONN because UDP is connectionless, WS-Discovery uses UDP port 3702 for local network discovery, 127.0.0.1 refers to the local computer, an open or listening port does not automatically mean there is malicious activity going on
 ## My Conclusion 
 I have successfully inspected the listening network services on kali linux and identified the processes behind the sockets. I have also found out that the UDP discovery traffic belonged to wsdd, while ollama was listening on the local loopback interface, the exercise has taught me why cybersecurity analysts should first identify and understand network services before deciding whether there is suspicious activity
+## Practical lab 20 : Investigating a TCP connection to a remote HTTPS Service
+### Objective
+To investigate an active TCP connection, identify the application that is responsible for it, and to capture the packets exchanges with a remote HTTPS service
+### Step 1 : Investigating active TCP connections
+The command being ss -tn the output showed 3 established TCP connections from my kali machine to remote IP addresses using destination port 443, the ESTAB state indicates that the TCP connection has been established
+### Step 2 : Identify the applications 
+The command being sudo ss -tnp the output showed firefox ESR as the application that is responsible for the connections. The process ID was 4334. Firefox had multiple established connections to remote HTTPS services
+### Step 3 : Capturing the HTTPS traffic
+The command being sudo tcpdump -i wlan0 -nn 'tcp port 443' -c 15 the capture showed packets exchanged between my kali machine of 10.209.157.104 and a remote server of 151.101.129.91 on TCP port 443. The first 3 packets showed the TCP 3-WAY handshake that is SYN - whereby my computer requested a TCP connection, SYN-ACK - The remote server accepted and acknowledged the request, ACK - whereby my computer acknowledged the servers response. After the handshake the packets containing application data were exchanged in both directions, the capture showed 15 packets captured and 0 dropped by the kernel
+## Lessons learnt
+I have learnt how to inspect active TCP connections using ss -tn, how to identify the applications responsible for a connection using ss - tnp, how to capture HTTPS-related TCP traffic using tcpdump, How to recognize the tcp 3-WAY handshake,How to interprete SYN, SYN-ACK, ACK, PSH and ACK flags, a packet capture can reveal connection metadata and traffic patterns without necessarily reavealing encrypted app content
+## Conclusion
+I have successfully investigated active TCP connections on my kali linux machine, identified firefox ESR as the application responsible for them captured the packets exchanged with a remote HTTPS service, I have observed the TCP 3-WAY handshake and the subsequent data exchange. The lab exercise has helped me understand how applications communicate with remote services and how network analysts can investigate those connections using linux networking tools
 
 
 
