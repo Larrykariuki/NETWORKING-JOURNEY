@@ -313,6 +313,7 @@ I have successfully inspected the listening network services on kali linux and i
 To investigate an active TCP connection, identify the application that is responsible for it, and to capture the packets exchanges with a remote HTTPS service
 ### Step 1 : Investigating active TCP connections
 The command being ss -tn the output showed 3 established TCP connections from my kali machine to remote IP addresses using destination port 443, the ESTAB state indicates that the TCP connection has been established
+![INVESTIGATING-TCP-CONNECTION-TO-REMOTE-SERVICE](labs/01-network-troubleshooting/screenshots/INVESTIGATING-TCP-CONNECTION-TO-REMOTE-SERVICE.png)
 ### Step 2 : Identify the applications 
 The command being sudo ss -tnp the output showed firefox ESR as the application that is responsible for the connections. The process ID was 4334. Firefox had multiple established connections to remote HTTPS services
 ### Step 3 : Capturing the HTTPS traffic
