@@ -264,10 +264,10 @@ HTTP headers carry information about requests,browser capabilities, content pref
 I captured successfully the HTTP traffic and identified the request headers and server response.This lab has helped me understand how HTTPS is important for protecting that information in transit
 ## Practical lab 17: Comparing HTTP and HTTPS packets
 ### My Objective
-The purpose is to compare HTTPS and HTTPS using tcpdump packet analysis tool and see the effects of the TLS encryption
+The purpose is to compare HTTP and HTTPS using tcpdump packet analysis tool and see the effects of the TLS encryption
 ### Step 1: Capturing the HTTP traffic
 The Command being sudo tcpdump -i wlan0 -nn -A -s 0 -c 20 'tcp port 443'
-![COMPARING-HTTP-HTTPS](labs/01-network-troubleshooting/screenshots/HTTP-TRAFFIC-INVESTIGATION.png)
+![COMPARING-HTTP-HTTPS](labs/01-network-troubleshooting/screenshots/COMPARING-HTTPS-HTTP-TRAFFIC.png)
 ### My Observations
 The Capture recorded 20 packets that involves my machine at 10.209.157.104 and a remote endpoint at 34.149.226.178:443
 ### Step 2: Inspecting the packet output 
