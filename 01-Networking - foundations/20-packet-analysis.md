@@ -4,7 +4,7 @@ This is the capturing and examining of network packets in order for someone to u
 ### Wireshark
 This is a graphical tool that is used to capture the packets in the network and can help us to identify the source and the destination of IP addresses, the communication protocals, the tcp and udp ports, the dns requests and responces and unusual traffic
 ### Tcpdump
-This is a command line tool in that is used to capture and inspect the traffic in the network and is very useful when u are working with a linux terminal like kali linux or ubuntu and other linux machines
+This is a command line tool that is used to capture and inspect the traffic in the network and is very useful when u are working with a linux terminal like kali linux or ubuntu and other linux machines
 ### Example: DNS traffic investigation 
 Lets say my laptop is making some unexpected DNS requests then i can use a packet analysis tool such as tcpdump or wireshark to investigate which domains names are communicating on the network, which dns are being requested and the time the requests are occuring 
 ## Importance of packet analysis in security 
@@ -31,7 +31,7 @@ sudo tcpdump -nn -vv -r /home/kali/dns-capture.pcap this command replays a packe
 the command being nslookup example.com asks a DNS server the ip address for example.com then prints the answer and also noted that the A and AAAA queries and replies  i captured are what nslookup triggers
 ![DNS LOOKUP](labs/01-network-troubleshooting/screenshots/nslookup.png)
 ## My observations
-The wireless interface is wlan0 with IPV4 address 10.80.205.104/24 where the 3 numbers identify the network and the last number represents the device, the DNS resolver was 10.80.205.129 using udp port 53 and i observed a DNS A record querry for the example.com,the resolver returned an IPV4 address including 172.66.147.243 and also saw an AAAA record querry for an IPV6 address then i saved the packets captured to .pcap file and read the file with tcpdump
+The wireless interface is wlan0 with IPV4 address 10.80.205.104/24 where the 3 numbers identify the network and the last number represents the device, the DNS resolver was 10.80.205.129 using udp port 53 and I observed a DNS A record querry for the example.com,the resolver returned an IPV4 address including 172.66.147.243 and also saw an AAAA record querry for an IPV6 address then i saved the packets captured to .pcap file and read the file with tcpdump
 ## Lessons that I learnt 
 tcpdump captures live traffic of the network and also can read the save captured file for analysis or troubleshooting or investigations, I have also learnt how to identify the DNS queries, responces, IP source and destination, ports and A and AAAA records
 ## Conclusion
@@ -56,7 +56,7 @@ I have understood how the DNS resolution can look like in a packet capture and t
 My objective is to observe the DNS requests and responces on my kali linux machine and to understand the dns queries that are reapeting 
 ### The command used
 The command used being sudo tcpdump -i wlan0 -nn -c 10 'port 53'which means the command is using tcpdump to capture and display the live network traffic this command captures the first 10 DNS packets that are moving across the wlan0 interface showing a raw and numerical format what each of the command does.
-sudo this is the super user or admin privilleges meaning it is running the command at the highest level as it is required to interact directly with the network driver, tcpdump is the packet analysis tool for cmd, -i wlan0 this specifies the network interface to listen on wlan0, -i representing the interface, -nn disables the names and the service resolution, -c 10 sets the packet count limit ,instead of running continously and terminating with ctrl c u can set the packets limit to 10 to  cancel out the process of packet capture ,and the 'port 53' tells the tcpdump to only capture traffic where the source and destination is on port 53 which is the standard port that is used for the dns querries and responces,the nslookup example.com is what we are going to use as the dns server the command helps in network troubleshooting.
+sudo this is the super user or admin privilleges meaning it is running the command at the highest level as it is required to interact directly with the network driver, tcpdump is the packet analysis tool for cmd, -i wlan0 this specifies the network interface to listen on wlan0, -i representing the interface, -nn disables the names and the service resolution, -c 10 sets the packet count limit ,instead of running continously and terminating with ctrl c you can set the packets limit to 10 to  cancel out the process of packet capture ,and the 'port 53' tells the tcpdump to only capture traffic where the source and destination is on port 53 which is the standard port that is used for the dns querries and responces,the nslookup example.com is what we are going to use as the dns server the command helps in network troubleshooting.
 ![10 packets capture](labs/01-network-troubleshooting/screenshots/capturing-10-packets.png)
 ## My Observations
 The observation from my terminal is that the machines ip address was 10.80.205.104, the dns resolver was 10.80.205.129, the dns traffic used port 53, An A query requested an IPV4 address for example.com, the response contained 104.20.23.154 and 172.66.147.243, repeated A queries appeared before a response, and the capture completed with 4 captured packets instead of the 10 maximum
@@ -68,7 +68,7 @@ This exercise has helped me observe the DNS requests and the responses and pract
 ### My objective
 The objective of this lab  is to monitor live DNS traffic on my kali linux machine and to see the queries for the different domain names the examples to be used are example.com and google.com
 ### Commands used
-The command to be used are sudo tcpdump -i wlan0 -nn -l 'udp port 53' which listens for incoming and outgoing traffic of the dns and prints back the packets as they are arriving and may show less detail than verbose capture (-v) moreover as the tcpdump is listening we open another terminal to generate the DNS queries and the command to be used are nslookup example.com and nslookup google.com
+The command to be used are sudo tcpdump -i wlan0 -nn -l 'udp port 53' which listens for incoming and outgoing traffic of the dns and prints back the packets as they are arriving and may show less detail than verbose capture (-vv) moreover as the tcpdump is listening we open another terminal to generate the DNS queries and the command to be used are nslookup example.com and nslookup google.com
 ![DNS MONITORING](labs/01-network-troubleshooting/screenshots/DNS-QUERY-NAMES.png)
 ![DNS MONITORING](labs/01-network-troubleshooting/screenshots/DNS-MONITORING.png)
 ### My observation 
