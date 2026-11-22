@@ -303,7 +303,7 @@ I have successfully captured HTTPS traffic and compared its visibility with the 
 ## My Objective 
 The objective of this lab is to inspect TCP sockets on kali linux and identify established connections and locally listening services 
 ### Step 1 : Inspecting TCP sockets
-The command being ss -tan, the output identified 2 TCP socket states: that is LISTEN on 127.0.0.1:11434, ESTAB from 10.209.157.104:58380 to 34.107.243.93:443
+The command being `ss -tan` the output identified 2 TCP socket states: that is LISTEN on `127.0.0.1:11434` ESTAB from 10.209.157.104:58380 to 34.107.243.93:443
 ![INSPECTING-TCP-SOCKETS](labs/01-network-troubleshooting/screenshots/INSPECTING-TCP-SOCKETS.png)
 ### Step 2 : Investigating the Listening port
 I identified that the listening port 11434 was Ollama which is a local AI model service, the address 127.0.0.1 is the loopback address. Binding to this address means that the listener accepts connections through the local machines loopback interface instead of listening directly on all network interfaces
