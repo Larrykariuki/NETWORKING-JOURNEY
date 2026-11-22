@@ -15,25 +15,28 @@ Packet analysis involves the examining of the network packets in order to unders
 The objective is to capture and inspect DNS requests and responses on my kali linux machine. The tools to be used are kali linux operating system, tcpdump, and nslookup 
 ## Commands used
 ### checking the network interface
-The command used to check the network interface are ip -br  address
+The command used to check the network interface are ``` bash ip -br  address ```
 ![network interface](labs/01-network-troubleshooting/screenshots/ip-br-address-1.png)
-ip - is the tool for managing network on linux, address means show the ip addresses and -br means breif in that the computer prints one short line per connection
-the output is eth0 which is the interface for ethernet cable is down, wlan0 is the wifi and the lo is the loopback interface which is the computer talking to intself, 10.80.205.104/24  is the ipv4 address the first 3 numbers identify the network while the last one identifies the device that is what /24 means the interface to capture is wlan0 because it is the only one that is carrying traffic
+```bash ip ``` is the tool for managing network on linux, ``` bash address ``` means show the ip addresses and ``` bash -br ``` means breif in that the computer prints one short line per connection
+the output is ``` bash eth0``` which is the interface for ethernet cable is down, ``` bash wlan0``` is the wifi and the ``` bash lo``` is the loopback interface which is the computer talking to itself, 10.80.205.104/24  is the ipv4 address the first 3 numbers identify the network while the last one identifies the device that is what /24 means the interface to capture is ``` bash wlan0``` because it is the only one that is carrying traffic
 ### Capture the DNS traffic
-the command being sudo tcpdump -i wlan0 -nn -vv port 53
+the command being ``` bash sudo tcpdump -i wlan0 -nn -vv port 53 ```
 ![DNS traffic capture](labs/01-network-troubleshooting/screenshots/dns-traffic-capture.png)
-this command records the DNS traffic going through my wifi, sudo means run it as the administrator, tcpdump is the tool for packet analysis in cmd, -i wlan0 listens on the wifi interface, -nn this shows the raw IP and the numerical port numbers, -vv this one gives extra details, port 53 shows only the DNS traffic, because 53 is associated with DNS in the output the > is when u can tell queries from replies if the 53 port is on the right of the arrow it is ur request going to the server and if it is vice versa it is the server answering back to you
+this command records the DNS traffic going through my wifi, ``` bash sudo``` means run it as the administrator, ``` bash tcpdump``` is the tool for packet analysis in cmd, ``` bash -i wlan0``` listens on the wifi interface, ``` bash -nn ``` this shows the raw IP and the numerical port numbers, ``` bash -vv``` this one gives extra details, ``` bash port 53``` shows only the DNS traffic, because 53 is associated with DNS in the output the ``` bash > ``` is when u can tell queries from replies if the 53 port is on the right of the arrow it is ur request going to the server and if it is vice versa it is the server answering back to you
 ### Save a packet capture
-sudo tcpdump -nn -vv -r /home/kali/dns-capture.pcap this command replays a packet that has been captured by the command sudo tcpdump -i wlan0 -nn port 53 -w dns-capture.pcap 
+``` bash sudo tcpdump -nn -vv -r /home/kali/dns-capture.pcap``` this command replays a packet that has been captured by the command ``` bash sudo tcpdump -i wlan0 -nn port 53 -w dns-capture.pcap``` 
 ![save packet capture ](labs/01-network-troubleshooting/screenshots/save-packet.png)
 ![DNS traffic capture](labs/01-network-troubleshooting/screenshots/read-saved-capture.png)
 ### Generating a DNS lookup
-the command being nslookup example.com asks a DNS server the ip address for example.com then prints the answer and also noted that the A and AAAA queries and replies  i captured are what nslookup triggers
+the command being ``` bash nslookup example.com``` asks a DNS server the ip address for example.com then prints the answer and also noted that the A and AAAA queries and replies  I captured are what nslookup triggers
 ![DNS LOOKUP](labs/01-network-troubleshooting/screenshots/nslookup.png)
 ## My observations
-The wireless interface is wlan0 with IPV4 address 10.80.205.104/24 where the 3 numbers identify the network and the last number represents the device, the DNS resolver was 10.80.205.129 using udp port 53 and I observed a DNS A record querry for the example.com,the resolver returned an IPV4 address including 172.66.147.243 and also saw an AAAA record querry for an IPV6 address then i saved the packets captured to .pcap file and read the file with tcpdump
+- The wireless interface is wlan0 with IPV4 address 10.80.205.104/24 where the 3 numbers identify the network and the last number represents the device
+- The DNS resolver was 10.80.205.129 using udp port 53 and I observed a DNS A record querry for the example.com
+- The resolver returned an IPV4 address including 172.66.147.243 and also saw an AAAA record querry for an IPV6 address then I saved the packets captured to .pcap file and read the file with tcpdump
 ## Lessons that I learnt 
-tcpdump captures live traffic of the network and also can read the save captured file for analysis or troubleshooting or investigations, I have also learnt how to identify the DNS queries, responces, IP source and destination, ports and A and AAAA records
+- Tcpdump captures live traffic of the network and also can read the save captured file for analysis or troubleshooting or investigations,
+- I have also learnt how to identify the DNS queries, responces, IP source and destination, ports and A and AAAA records
 ## Conclusion
 Now I have understood how the DNS works in packets and how analysing the packets helps in trouble shooting networks and investigating security incidences
 ## Practical lab 2: Inspecting the DNS packets with wireshark
@@ -55,7 +58,7 @@ I have understood how the DNS resolution can look like in a packet capture and t
 ### My Objective
 My objective is to observe the DNS requests and responces on my kali linux machine and to understand the dns queries that are reapeting 
 ### The command used
-The command used being sudo tcpdump -i wlan0 -nn -c 10 'port 53'which means the command is using tcpdump to capture and display the live network traffic this command captures the first 10 DNS packets that are moving across the wlan0 interface showing a raw and numerical format what each of the command does.
+The command used being ``` bash sudo tcpdump -i wlan0 -nn -c 10 'port 53'```which means the command is using tcpdump to capture and display the live network traffic this command captures the first 10 DNS packets that are moving across the wlan0 interface showing a raw and numerical format what each of the command does.
 sudo this is the super user or admin privilleges meaning it is running the command at the highest level as it is required to interact directly with the network driver, tcpdump is the packet analysis tool for cmd, -i wlan0 this specifies the network interface to listen on wlan0, -i representing the interface, -nn disables the names and the service resolution, -c 10 sets the packet count limit ,instead of running continously and terminating with ctrl c you can set the packets limit to 10 to  cancel out the process of packet capture ,and the 'port 53' tells the tcpdump to only capture traffic where the source and destination is on port 53 which is the standard port that is used for the dns querries and responces,the nslookup example.com is what we are going to use as the dns server the command helps in network troubleshooting.
 ![10 packets capture](labs/01-network-troubleshooting/screenshots/capturing-10-packets.png)
 ## My Observations
@@ -68,7 +71,7 @@ This exercise has helped me observe the DNS requests and the responses and pract
 ### My objective
 The objective of this lab  is to monitor live DNS traffic on my kali linux machine and to see the queries for the different domain names the examples to be used are example.com and google.com
 ### Commands used
-The command to be used are sudo tcpdump -i wlan0 -nn -l 'udp port 53' which listens for incoming and outgoing traffic of the dns and prints back the packets as they are arriving and may show less detail than verbose capture (-vv) moreover as the tcpdump is listening we open another terminal to generate the DNS queries and the command to be used are nslookup example.com and nslookup google.com
+The command to be used are ``` bash sudo tcpdump -i wlan0 -nn -l 'udp port 53'``` which listens for incoming and outgoing traffic of the dns and prints back the packets as they are arriving and may show less detail than verbose capture (-vv) moreover as the tcpdump is listening we open another terminal to generate the DNS queries and the command to be used are ``` bash nslookup example.com and nslookup google.com```
 ![DNS MONITORING](labs/01-network-troubleshooting/screenshots/DNS-QUERY-NAMES.png)
 ![DNS MONITORING](labs/01-network-troubleshooting/screenshots/DNS-MONITORING.png)
 ### My observation 
@@ -81,9 +84,15 @@ This lab has helped me to practise live DNS monitoring and to understand how def
 ### My Objective
 The objective is to identify active TCP connections, the application associated and the registered remote IP addresses of the organizations
 ### The commands used
-The built in tool command in linux is ss. Open the terminal and run ss-tun the command will then display the TCP and UDP sockets to show the remote endpoints in kali the command used is ss-tnp which displays the tcp sockets numerically and show process information. The output of the command identified 3 tcp connections linked to firefox and all 3 remote endpoints used port 443 which is associated with HTTPS
+The built in tool command in linux is ``` bash ss```. Open the terminal and run ss-tun the command will then display the TCP and UDP sockets to show the remote endpoints in kali the command used is ss-tnp which displays the tcp sockets numerically and show process information. The output of the command identified 3 tcp connections linked to firefox and all 3 remote endpoints used port 443 which is associated with HTTPS
 ### Whois command
-This command is used to identify the IP address discovered during the display of servers in the network. The commands are (a) whois 140.82.112.26, (b) whois 34.107.243.93 and (c) whois 151.101.1.91. The findings I saw was that (a) is registered to github inc, (b) is registered to google LLC and also the whois noted that gogle cloud customers use addresses in this allocation and the last one i checked was 151.101,1,91 that is registered to fastly
+This command is used to identify the IP address discovered during the display of servers in the network. The commands are 
+``` bash (a) whois 140.82.112.26 
+- (b) whois 34.107.243.93  
+- (c) whois 151.101.1.91
+```
+The findings I saw was that 
+(a) is registered to github inc, (b) is registered to google LLC and also the whois noted that gogle cloud customers use addresses in this allocation and the last one i checked was 151.101,1,91 that is registered to fastly
 ### Lessons Learnt
 ss-tnp shows established TCP connections,remote and local ip addresses, port numbers and their processes. Whois identifies the organization that is associated with an IP address range, the port 443 indicates HTTPS traffic and the organizations such as google and fastly provides the infrastructure that is used by other services
 ### My security takeaway 
