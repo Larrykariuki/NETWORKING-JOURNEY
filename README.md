@@ -87,16 +87,18 @@ TCP is like a messenger that makes sure and double checks if everything is corre
 ### What I Learned 
 TCP is used when priority is given to the reliability of the data while UDP is used when speed and low delay of the data are priorities
 ### Network ports
-It is a logical number given to a service or an application running on a device  and they work together with IP addresses and transport protocals such as TCP and UDP 
+It is a logical number given to a service or an application running on a device  and they work together with IP addresses and transport protocols such as TCP and UDP 
 ### Example
 An IP address is the address of the building while the port is the room number inside the building
 for example
-HTTP PORT 80,
-HTTPS PORT 443,
-SSH PORT 22,
-DNS PORT 53.
+```
+HTTP PORT 80
+HTTPS PORT 443
+SSH PORT 22
+DNS PORT 53
+```
 ### What I Learned 
-An IP address helps idenify the location of the device or its network interface while the port helps identify the application or service that should be receiving network traffic
+An IP address helps identify the location of the device or its network interface while the port helps identify the application or service that should be receiving network traffic
 ## How Data moves across the network
 when I send data from my computer to another several things happen in between on the network
 ### The flow of how data travels from one device to another across the network
@@ -106,30 +108,32 @@ different network layers are used to transport data between devices and applicat
 ## Subnetting
 Dividing a network into smaller networks called subnets 
 ### Importance of subnetting 
-Organize networks,
-Reduce unnecessary network traffic,
-Use IP adresses  more efficiently
-seperate groups of devices
-improve network  management and security
+- Organize networks,
+- Reduce unnecessary network traffic
+- Use IP adresses  more efficiently
+- seperate groups of devices
+- Improve network  management and security
 ### Example
 A Large neighbourhood divided into different streets
 ### What I Learned 
 Subnetting is the process of dividing a network into smaller more manageable networks for efficiency called subnets
 e.g, a /24 network can be divided into multiple /26 networks
 For /26
-0......63,
-64......127,
-128......191,
-192.......255,
+```
+0......63
+64......127
+128......191
+192.......255
+```
 where there are 64 total addresses,62 usable host addresses,1 network address and 1 broadcast address,
 I learned how to identify subnet boundaries 
-192.168.10.0/26, 192.168.10.64/26, 192.168.10.128/26, 192.168.10.192/26,
+```192.168.10.0/26, 192.168.10.64/26, 192.168.10.128/26, 192.168.10.192/26,```
 ## Network Segmentation
 is the process of dividing a network into seperate segments or security zones
 Organizations can use network segmentation to:
 control network traffic, Restrict access  between systems,
 Reduce unnecessary exposure,
-limits lateral movement after a compromise,the firewall or rules for routing can controll what traffic is allowed between the segments
+limits lateral movement after a compromise,the firewall or rules for routing can control what traffic is allowed between the segments
 ### What I want to learn next 
 I want to move from networking theory into practical networking labs,eventually using linux and wireshark to see the concepts I am learning in real network traffic.
 My goal is to build practical cybersecurity skills and document my progress on github
