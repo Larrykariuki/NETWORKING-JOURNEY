@@ -127,7 +127,7 @@ For /26
 ```
 where there are 64 total addresses,62 usable host addresses,1 network address and 1 broadcast address,
 I learned how to identify subnet boundaries 
-```192.168.10.0/26, 192.168.10.64/26, 192.168.10.128/26, 192.168.10.192/26,```
+`192.168.10.0/26, 192.168.10.64/26, 192.168.10.128/26, 192.168.10.192/26,`
 ## Network Segmentation
 is the process of dividing a network into seperate segments or security zones
 Organizations can use network segmentation to:
