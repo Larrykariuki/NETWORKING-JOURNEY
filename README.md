@@ -135,7 +135,7 @@ control network traffic, Restrict access  between systems,
 Reduce unnecessary exposure,
 limits lateral movement after a compromise,the firewall or rules for routing can control what traffic is allowed between the segments
 ### What I want to learn next 
-I want to move from networking theory into practical networking labs,eventually using linux and wireshark to see the concepts I am learning in real network traffic.
+I want to move from networking theory into practical networking labs,eventually using linux and wireshark [packet analysis](20-packet-analysis.md) to see the concepts I am learning in real network traffic.
 My goal is to build practical cybersecurity skills and document my progress on github
        
 
